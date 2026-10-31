@@ -1,0 +1,77 @@
+name: Separar portada y exposición
+
+on:
+  push:
+    paths:
+      - '.github/workflows/separate-home-screen.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-site:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Convertir portada en primera pantalla
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path('index.html')
+          text = path.read_text(encoding='utf-8')
+
+          css = """
+          .intro-screen{min-height:100svh;height:100svh;overflow:hidden}
+          .site-header{display:none}
+          #exposicion{display:none}
+          body.exhibition-open .site-header{display:flex}
+          body.exhibition-open #inicio{display:none}
+          body.exhibition-open #exposicion{display:block}
+          .back-home{display:inline-flex;align-items:center;justify-content:center;margin-right:18px;opacity:.55;transition:opacity .2s ease}
+          .back-home:hover{opacity:1}
+          @media(max-width:800px){.intro-screen{min-height:100dvh;height:100dvh}.back-home{margin-right:12px}}
+          """
+          if '.intro-screen{min-height:100svh;height:100svh' not in text:
+              text = text.replace('</style>', css + '</style>', 1)
+
+          old_header = '<header class="site-header"><a class="logo" href="#inicio">COA</a><nav class="nav"><a href="#obra">Obra</a><a href="#sobre">Sobre mí</a></nav></header>'
+          new_header = '<header class="site-header"><a class="logo" href="#inicio" data-home>COA</a><nav class="nav"><a href="#obra">Obra</a><a href="#sobre">Sobre mí</a></nav></header>'
+          text = text.replace(old_header, new_header, 1)
+
+          old_intro = '<section class="intro-screen" id="inicio"><h1>Cristhian<br>Osorio Acosta</h1><p class="intro-copy">Pintor autodidacta. Una selección de obras nacidas del sentimiento, la imaginación y aquello que no siempre puede decirse con palabras.</p><a class="gallery-button" href="#obra">Ver galería completa</a></section>'
+          new_intro = '<section class="intro-screen" id="inicio"><h1>Cristhian<br>Osorio Acosta</h1><p class="intro-copy">Pintor autodidacta. Una selección de obras nacidas del sentimiento, la imaginación y aquello que no siempre puede decirse con palabras.</p><a class="gallery-button" href="#exposicion" data-enter-exhibition>Ver exposición</a></section>'
+          if old_intro not in text:
+              raise SystemExit('No se encontró la portada esperada.')
+          text = text.replace(old_intro, new_intro, 1)
+
+          text = text.replace('<section id="obra">', '<div id="exposicion">\n<section id="obra">', 1)
+          marker = '<section class="statement"><p>“Pinto aquello que no siempre puede decirse, pero que insiste en ser sentido.”</p></section>'
+          text = text.replace(marker, marker + '\n</div>', 1)
+
+          script = """
+          const exhibition=document.getElementById('exposicion');
+          const enterExhibition=document.querySelector('[data-enter-exhibition]');
+          const homeLink=document.querySelector('[data-home]');
+          function openExhibition(){document.body.classList.add('exhibition-open');window.scrollTo(0,0);history.replaceState(null,'','#exposicion');}
+          function openHome(){document.body.classList.remove('exhibition-open');window.scrollTo(0,0);history.replaceState(null,'','#inicio');}
+          enterExhibition.addEventListener('click',e=>{e.preventDefault();openExhibition()});
+          homeLink.addEventListener('click',e=>{e.preventDefault();openHome()});
+          if(location.hash==='#exposicion')openExhibition();
+          """
+          text = text.replace('</script></body></html>', script + '</script></body></html>', 1)
+
+          path.write_text(text, encoding='utf-8')
+          PY
+
+      - name: Guardar cambios y retirar instalador
+        run: |
+          rm -f .github/workflows/separate-home-screen.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html .github/workflows/separate-home-screen.yml
+          git diff --cached --quiet || git commit -m "Crea portada independiente para la exposición"
+          git push
