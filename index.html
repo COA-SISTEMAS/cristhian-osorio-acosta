@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
 <meta name="theme-color" content="#f4f1eb">
 <meta name="description" content="Cristhian Osorio Acosta — Exposición artística 2026.">
 <title>Cristhian Osorio Acosta — Exposición 2026</title>
@@ -20,10 +22,16 @@
 <h1>Cristhian<br>Osorio Acosta</h1>
 <div class="line"></div>
 <div class="subtitle">Una mirada a través de la pintura · 2017—2026</div>
-<a class="enter" href="./exposicion.html#obra" aria-label="Entrar directamente a la galería">Entrar a la galería</a>
+<a class="enter" href="exposicion.html?v=20261031#obra" onclick="entrarGaleria(event)">Entrar a la galería</a>
 </div>
 <div class="year">Colección personal</div>
 <div class="signature">COA</div>
 </main>
+<script>
+function entrarGaleria(e){
+  e.preventDefault();
+  window.location.href = 'exposicion.html?v=' + Date.now() + '#obra';
+}
+</script>
 </body>
 </html>
