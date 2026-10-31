@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Exposición artística de Cristhian Osorio Acosta. Pintura, emociones y exploración de la condición humana.">
+  <meta name="description" content="Exposición artística de Cristhian Osorio Acosta, pintor hondureño de 26 años. Surrealismo, arte abstracto y pintura nacida del sentimiento.">
   <title>Cristhian Osorio Acosta — Exposición</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,7 +21,7 @@
     .hero{min-height:100vh;padding:170px 8vw 80px;display:grid;grid-template-columns:1.1fr .9fr;gap:8vw;align-items:center}
     .eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.25em;color:var(--muted);margin-bottom:28px}
     h1{font-family:'Playfair Display',serif;font-size:clamp(58px,9vw,125px);font-weight:400;line-height:.9;letter-spacing:-.055em}
-    .intro{max-width:430px;margin-top:42px;font-size:16px;color:#5f5b55}
+    .intro{max-width:500px;margin-top:42px;font-size:16px;color:#5f5b55}
     .hero-art{height:65vh;min-height:420px;background:var(--card);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
     .hero-art::after{content:'OBRA / 01';position:absolute;bottom:20px;left:22px;font-size:10px;letter-spacing:.18em;color:#77736d}
     .placeholder{font-family:'Playfair Display',serif;font-size:22px;color:#aaa49b;font-style:italic}
@@ -37,8 +37,9 @@
     .caption strong{font-family:'Playfair Display',serif;font-size:24px;font-weight:400}.caption span{display:block;font-size:10px;letter-spacing:.16em;text-transform:uppercase;opacity:.75;margin-top:5px}
     .statement{max-width:850px;margin:auto;text-align:center;padding:160px 0}
     .statement p{font-family:'Playfair Display',serif;font-size:clamp(30px,4vw,56px);line-height:1.2}
-    .about{display:grid;grid-template-columns:1fr 1fr;gap:10vw;border-top:1px solid var(--line);padding-top:35px}
-    .about h3{font-family:'Playfair Display',serif;font-size:38px;font-weight:400}.about p{max-width:560px;color:#68645e}
+    .about{display:grid;grid-template-columns:.75fr 1.25fr;gap:10vw;border-top:1px solid var(--line);padding-top:35px}
+    .about h3{font-family:'Playfair Display',serif;font-size:38px;font-weight:400}.about p{max-width:700px;color:#68645e;font-size:16px}
+    .about p+p{margin-top:22px}
     footer{padding:50px 8vw;border-top:1px solid var(--line);display:flex;justify-content:space-between;font-size:11px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
     @media(max-width:800px){header{padding:20px 5vw}nav{gap:15px;font-size:9px}.hero{grid-template-columns:1fr;padding:130px 6vw 50px}.hero-art{height:55vh}.gallery{display:block}.work{margin:0 0 24px!important;min-height:420px}.work-inner{min-height:420px}.about{grid-template-columns:1fr;gap:35px}section{padding:90px 6vw}.statement{padding:100px 0}footer{padding:35px 6vw;gap:20px;flex-direction:column}}
   </style>
@@ -52,9 +53,9 @@
 <main>
   <section class="hero" id="inicio">
     <div>
-      <div class="eyebrow">Artista · Honduras · 2026</div>
+      <div class="eyebrow">Pintor · Honduras · 26 años</div>
       <h1>Cristhian<br>Osorio<br>Acosta</h1>
-      <p class="intro">Una colección de pinturas nacidas de la observación, la emoción y aquello que permanece dentro de nosotros cuando las palabras ya no son suficientes.</p>
+      <p class="intro">Pintor de nacimiento. Desde niño encontré en la pintura una forma de sentir, imaginar y expresar aquello que las palabras no siempre pueden explicar.</p>
     </div>
     <div class="hero-art"><span class="placeholder">Tu obra principal</span></div>
   </section>
@@ -76,7 +77,11 @@
   <section id="sobre">
     <div class="about">
       <h3>Sobre el artista</h3>
-      <p>Cristhian Osorio Acosta explora la pintura como un espacio para convertir emociones, pensamientos y experiencias humanas en imágenes. Esta exposición reúne una obra en construcción, donde cada pieza busca provocar una pausa y una interpretación personal en quien la contempla.</p>
+      <div>
+        <p>Me considero un pintor de nacimiento. Cuando tenía apenas 6 años, mi padre me ponía a pintar la luna. Con el paso del tiempo he llegado a pensar que quizá aquel gesto de mi infancia fue un pequeño prólogo, un posible designio de Dios que me acercó desde muy temprano al lenguaje de la pintura.</p>
+        <p>Hoy tengo 26 años y muchas de las obras que he creado a lo largo de mi vida se han perdido. Las pocas que aún conservo conmigo son parte de esta exposición: fragmentos de distintas etapas, emociones y momentos que lograron permanecer.</p>
+        <p>Me atraen especialmente el surrealismo y el arte abstracto. En ellos encuentro libertad para transformar pensamientos, emociones y experiencias en formas, colores y símbolos. Para mí, pintar no es solamente crear una imagen: es sentirla primero. <strong>Pintar con sentimiento es mi pasión.</strong></p>
+      </div>
     </div>
   </section>
 </main>
