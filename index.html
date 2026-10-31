@@ -30,13 +30,14 @@
     h2{font-family:'Playfair Display',serif;font-size:clamp(38px,5vw,70px);font-weight:400}
     .count{font-size:11px;color:var(--muted);letter-spacing:.15em}
     .gallery{display:grid;grid-template-columns:repeat(12,1fr);gap:24px}
-    .work{background:var(--card);position:relative;overflow:hidden;cursor:pointer}
+    .work{position:relative;overflow:hidden;cursor:pointer;background:transparent}
     .work:nth-child(1){grid-column:span 7}.work:nth-child(2){grid-column:span 5;margin-top:110px}.work:nth-child(3){grid-column:span 5}.work:nth-child(4){grid-column:span 7;margin-top:100px}
-    .work-inner{display:flex;align-items:center;justify-content:center;overflow:hidden;background:transparent;line-height:0}
+    .work-inner{display:flex;align-items:center;justify-content:center;overflow:hidden;background:transparent;line-height:0;padding:10px}
+    .work:nth-child(1) .work-inner{background:#111;padding:10px}
+    .work:nth-child(2) .work-inner{background:#fff;padding:10px}
     .work-inner img{display:block;width:100%;height:auto;max-width:100%;object-fit:contain;image-rendering:auto;transition:transform .5s ease}
-    .work:nth-child(1) .work-inner img{object-fit:contain}
     .work:hover .work-inner img{transform:scale(1.01)}
-    .caption{position:absolute;bottom:0;left:0;right:0;padding:25px;background:linear-gradient(transparent,rgba(0,0,0,.72));color:white;padding-top:80px;line-height:1.4}
+    .caption{position:absolute;bottom:10px;left:10px;right:10px;padding:25px;background:linear-gradient(transparent,rgba(0,0,0,.72));color:white;padding-top:80px;line-height:1.4}
     .caption strong{font-family:'Playfair Display',serif;font-size:28px;font-weight:400}.caption span{display:block;font-size:10px;letter-spacing:.16em;text-transform:uppercase;opacity:.8;margin-top:5px}
     .statement{max-width:850px;margin:auto;text-align:center;padding:160px 0}
     .statement p{font-family:'Playfair Display',serif;font-size:clamp(30px,4vw,56px);line-height:1.2}
@@ -54,10 +55,11 @@
       .hero-art::after{bottom:16px;left:18px}
       .gallery{display:block}
       .work{margin:0 0 24px!important;min-height:0;background:transparent}
-      .work-inner{min-height:0;width:100%;height:auto;background:transparent}
+      .work-inner{min-height:0;width:100%;height:auto;padding:8px;background:transparent}
+      .work:nth-child(1) .work-inner{padding:8px;background:#111}
+      .work:nth-child(2) .work-inner{padding:8px;background:#fff}
       .work-inner img{width:100%;height:auto;max-width:none;max-height:none}
-      .work:nth-child(1) .work-inner img{object-fit:contain}
-      .caption{padding:22px;padding-top:75px}
+      .caption{left:8px;right:8px;bottom:8px;padding:22px;padding-top:75px}
       section{padding:80px 6vw}
       #obra{padding-left:0;padding-right:0}
       #obra .section-head{margin-left:6vw;margin-right:6vw}
@@ -118,26 +120,5 @@
 </main>
 
 <footer id="contacto"><span>© 2026 Cristhian Osorio Acosta</span><span>Exposición artística</span></footer>
-
-<script>
-  function igualarIgnicionASujecion(){
-    const ignicion=document.querySelector('.work:nth-child(1) .work-inner img');
-    const sujecion=document.querySelector('.work:nth-child(2) .work-inner img');
-    if(!ignicion||!sujecion||!sujecion.complete)return;
-    ignicion.style.height='auto';
-    ignicion.style.width='100%';
-    requestAnimationFrame(()=>{
-      const alturaSujecion=sujecion.getBoundingClientRect().height;
-      if(alturaSujecion>0){
-        ignicion.style.height=alturaSujecion+'px';
-        ignicion.style.width='100%';
-        ignicion.style.objectFit='contain';
-      }
-    });
-  }
-  window.addEventListener('load',igualarIgnicionASujecion);
-  window.addEventListener('resize',igualarIgnicionASujecion);
-  document.querySelector('.work:nth-child(2) img')?.addEventListener('load',igualarIgnicionASujecion);
-</script>
 </body>
 </html>
