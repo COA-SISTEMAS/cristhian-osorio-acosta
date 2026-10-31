@@ -2,6 +2,9 @@ name: Actualizar contacto del artista
 
 on:
   workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/actualizar-contacto.yml'
 
 permissions:
   contents: write
