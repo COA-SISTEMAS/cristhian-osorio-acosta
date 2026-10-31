@@ -1,0 +1,50 @@
+name: Actualizar contacto del artista
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-contact:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Agregar datos de contacto
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          path = Path('index.html')
+          text = path.read_text(encoding='utf-8')
+
+          contact_css = """
+          .contact-links{display:flex;gap:28px;align-items:center;flex-wrap:wrap}
+          .contact-links a{transition:opacity .2s ease}
+          .contact-links a:hover{opacity:.55}
+          @media(max-width:800px){.contact-links{gap:10px 18px}}
+          """
+
+          if '.contact-links{' not in text:
+              text = text.replace('</style>', contact_css + '</style>', 1)
+
+          footer = '''<footer><span>© 2026 Cristhian Osorio Acosta</span><div class="contact-links"><a href="https://wa.me/50496775363" target="_blank" rel="noopener">WhatsApp · +504 9677-5363</a><a href="mailto:cristhianosorio503@gmail.com">cristhianosorio503@gmail.com</a><a href="https://instagram.com/Cristh_____" target="_blank" rel="noopener">Instagram · @Cristh_____</a></div><span>Exposición artística</span></footer>'''
+
+          updated, count = re.subn(r'<footer>.*?</footer>', footer, text, count=1, flags=re.S)
+          if count != 1:
+              raise SystemExit('No se encontró el footer existente; no se modificó el sitio.')
+
+          path.write_text(updated, encoding='utf-8')
+          PY
+
+      - name: Guardar cambios
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git diff --cached --quiet || git commit -m "Agrega datos de contacto del artista"
+          git push
