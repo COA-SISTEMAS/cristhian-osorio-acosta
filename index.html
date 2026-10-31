@@ -5,243 +5,234 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
 <title>Cristhian Osorio Acosta — Exposición de pintura</title>
 <meta name="description" content="Exposición de pintura de Cristhian Osorio Acosta: dieciséis obras en acrílico y acuarela, de 2015 a 2026.">
-<meta name="theme-color" content="#f3f1ed">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Cristhian Osorio Acosta — Exposición de pintura">
-<meta property="og:description" content="Dieciséis obras en acrílico y acuarela, de 2015 a 2026.">
-<meta property="og:locale" content="es_HN">
+<meta name="theme-color" content="#131211">
+<meta property="og:type" content="website"><meta property="og:title" content="Cristhian Osorio Acosta — Exposición de pintura"><meta property="og:description" content="Dieciséis obras en acrílico y acuarela, de 2015 a 2026."><meta property="og:locale" content="es_HN">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-<noscript><style>#exposicion{display:block!important}#inicio{display:none!important}.site-header{display:flex!important}</style></noscript>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-:root{--paper:#f3f1ed;--alt:#e9e6e0;--ink:#161616;--muted:#6b6760;--line:#d6d1c8;--accent:#a82230;--accent-dark:#861a26;--serif:'Playfair Display',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif}
+:root{--wall:#f4f2ee;--alt:#eae7e1;--ink:#141414;--muted:#6f6a63;--line:#d8d3ca;--night:#131211;--cream:#efeae0;--accent:#9e2a2b;--serif:'Cormorant Garamond',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif}
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;background:var(--paper);-webkit-text-size-adjust:100%;overflow-x:clip}
-body{background:var(--paper);color:var(--ink);font:300 15px/1.7 var(--sans);overflow-x:clip;-webkit-font-smoothing:antialiased}
-a{color:inherit;text-decoration:none}button{font:inherit;color:inherit}
+html{scroll-behavior:smooth;background:var(--night);-webkit-text-size-adjust:100%;overflow-x:clip}
+body{background:var(--wall);color:var(--ink);font:300 15px/1.7 var(--sans);overflow-x:clip;-webkit-font-smoothing:antialiased}
+body:not(.open){background:var(--night)}
+a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
-.skip{position:absolute;left:12px;top:-60px;background:var(--ink);color:#fff;padding:10px 16px;z-index:200;font-size:13px}.skip:focus{top:12px}
+.skip{position:absolute;left:12px;top:-60px;background:var(--ink);color:#fff;padding:10px 16px;z-index:300;font-size:13px}.skip:focus{top:12px}
 
-/* Cabecera */
-.site-header{display:none;position:fixed;inset:0 0 auto;z-index:50;align-items:center;justify-content:space-between;padding:0 5vw;height:68px;background:rgba(243,241,237,.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
-.logo{font-family:var(--serif);font-size:20px;letter-spacing:.08em}
-.nav{display:flex;gap:32px;font-size:12px;letter-spacing:.06em}
-.nav a{color:var(--muted);transition:color .2s}.nav a:hover{color:var(--ink)}
+/* Portada: presentación oscura con obras que se alternan */
+#inicio{min-height:100svh;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);align-items:center;gap:5vw;padding:48px 6vw;background:var(--night);color:var(--cream)}
+.kicker{font-size:14px;color:#a49d90;margin-bottom:26px}
+h1{font-family:var(--serif);font-weight:300;font-size:clamp(56px,8.2vw,132px);line-height:.88;letter-spacing:-.03em;animation:rise 1.2s cubic-bezier(.2,.7,.2,1) both}
+h1 em{font-weight:300}
+.lede{max-width:430px;margin-top:34px;color:#b9b2a5;font-size:16px;line-height:1.85;animation:rise 1.2s .2s cubic-bezier(.2,.7,.2,1) both}
+.btn{display:inline-flex;align-items:center;min-height:52px;margin-top:42px;padding:0 34px;border:1px solid var(--cream);font-size:14px;letter-spacing:.04em;transition:background .3s,color .3s;animation:rise 1.2s .35s cubic-bezier(.2,.7,.2,1) both}
+.btn:hover{background:var(--cream);color:var(--night)}
+.stage{position:relative;height:min(78svh,820px);animation:fade 1.6s .2s both}
+.stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;transition:opacity 1.6s ease;filter:drop-shadow(0 30px 60px rgba(0,0,0,.55))}
+.stage img.on{opacity:1}
+.stage-label{position:absolute;left:0;right:0;bottom:-34px;display:flex;justify-content:space-between;font-size:13px;color:#a49d90}
+.stage-label em{font-family:var(--serif);font-size:19px;color:var(--cream)}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}}@keyframes fade{from{opacity:0}}
 
-/* Portada */
-#inicio{min-height:100svh;display:grid;grid-template-columns:1.1fr .9fr;gap:6vw;align-items:center;padding:64px 7vw}
-.hero-text{max-width:640px}
-.kicker{font-size:13px;color:var(--muted);margin-bottom:28px}
-h1{font-family:var(--serif);font-weight:400;font-size:clamp(52px,8.4vw,128px);line-height:.9;letter-spacing:-.05em;animation:rise 1s cubic-bezier(.2,.7,.2,1) both}
-.intro-copy{max-width:470px;margin-top:34px;color:#5f5b54;font-size:15px;line-height:1.85;animation:rise 1s .15s cubic-bezier(.2,.7,.2,1) both}
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;margin-top:40px;padding:0 30px;background:var(--accent);border:1px solid var(--accent);color:#fff;font-size:13px;letter-spacing:.08em;transition:background .2s,transform .2s;animation:rise 1s .3s cubic-bezier(.2,.7,.2,1) both}
-.btn:hover{background:var(--accent-dark);transform:translateY(-1px)}
-.hero-art{margin:0;animation:fade 1.4s .2s both}
-.hero-art .frame{background:#fff;padding:14px;box-shadow:0 30px 80px rgba(30,25,20,.16)}
-.hero-art img{display:block;width:100%;height:auto;max-height:68svh;object-fit:contain;margin:auto}
-.hero-art figcaption{margin-top:16px;font-size:12px;color:var(--muted)}
-.hero-art figcaption em{font-family:var(--serif);font-size:16px;color:var(--ink)}
-@keyframes rise{from{opacity:0;transform:translateY(22px)}}@keyframes fade{from{opacity:0}}
+/* Cabecera con progreso de lectura */
+.site-header{display:none;position:fixed;inset:0 0 auto;z-index:60;height:70px;align-items:center;justify-content:space-between;padding:0 5vw;background:rgba(244,242,238,.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.logo{font-family:var(--serif);font-size:24px;letter-spacing:.1em}
+.nav{display:flex;gap:34px;font-size:13px}.nav a{color:var(--muted);transition:color .2s}.nav a:hover{color:var(--ink)}
+.progress{position:absolute;left:0;bottom:-1px;height:1px;background:var(--accent);width:0}
+body.open .site-header{display:flex}body.open #inicio{display:none}#exposicion{display:none}body.open #exposicion{display:block}
 
 /* Exposición */
-#exposicion{display:none}
-body.exhibition-open .site-header{display:flex}
-body.exhibition-open #inicio{display:none}
-body.exhibition-open #exposicion{display:block}
-section{padding:130px 8vw 110px;scroll-margin-top:68px}
-.section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:34px}
-h2{font-family:var(--serif);font-size:clamp(44px,5vw,72px);font-weight:400;line-height:1;letter-spacing:-.02em}
-.count{font-size:13px;color:var(--muted)}
-.loading-note{margin-bottom:48px;color:var(--muted);font-size:13px}
-.timeline{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:96px}
-.timeline-item{padding:20px 18px 22px;border-right:1px solid var(--line);transition:background .2s}
-.timeline-item:last-child{border-right:0}.timeline-item:hover,.timeline-item.is-active{background:var(--alt)}
-.timeline-year{display:block;font-family:var(--serif);font-size:26px;line-height:1.2}
-.timeline-count{display:block;color:var(--muted);font-size:12px}
-
-.gallery{display:grid;grid-template-columns:repeat(12,1fr);gap:100px 32px;align-items:start}
+section{scroll-margin-top:70px}
+.opening{padding:170px 8vw 70px;display:grid;grid-template-columns:1fr 1fr;gap:6vw;align-items:end}
+h2{font-family:var(--serif);font-weight:300;font-size:clamp(60px,8vw,128px);line-height:.9;letter-spacing:-.03em}
+.opening p{max-width:460px;color:#5f5a53;font-size:16px;line-height:1.9;justify-self:end}
+.toolbar{position:sticky;top:70px;z-index:40;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;margin:0 8vw;padding:14px 0;background:var(--wall);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.filters{display:flex;gap:6px;flex-wrap:wrap}
+.chip{padding:7px 15px;font-size:13px;color:var(--muted);border:1px solid transparent;border-radius:99px;transition:all .2s}
+.chip:hover{color:var(--ink)}.chip[aria-pressed=true]{color:var(--ink);border-color:var(--ink)}
+.views{display:flex;gap:18px;font-size:13px}.views button{color:var(--muted);padding:6px 0;border-bottom:1px solid transparent}.views button[aria-pressed=true]{color:var(--ink);border-color:var(--accent)}
+.note{margin:22px 8vw 0;color:var(--muted);font-size:13px}
+#works{padding:70px 8vw 150px;min-height:70vh}
+.gallery{display:grid;grid-template-columns:repeat(12,1fr);gap:130px 32px;align-items:start}
 .work{grid-column:1/span 7;cursor:zoom-in}
-.work:nth-child(4n+2){grid-column:9/span 4;margin-top:140px}
+.work:nth-child(4n+2){grid-column:9/span 4;margin-top:150px}
 .work:nth-child(4n+3){grid-column:2/span 5}
-.work:nth-child(4n+4){grid-column:8/span 5;margin-top:100px}
-.work-inner{background:#fff;padding:12px;min-height:160px;box-shadow:0 22px 60px rgba(30,25,20,.10);transition:box-shadow .3s,transform .3s}
-.work:hover .work-inner{box-shadow:0 30px 70px rgba(30,25,20,.18);transform:translateY(-3px)}
-.work img{display:block;width:100%;height:auto;transition:opacity .6s}
-.js .work img{opacity:0}.js .work img.is-ready{opacity:1}
-.caption{padding-top:18px;display:flex;justify-content:space-between;align-items:baseline;gap:18px}
-.caption strong{font-family:var(--serif);font-size:25px;font-weight:400;line-height:1.2}
-.caption span{font-size:12px;color:var(--muted);text-align:right}
-.work-description{padding-top:8px;max-width:560px;color:#6a665f;font-size:13px;line-height:1.75}
+.work:nth-child(4n+4){grid-column:8/span 5;margin-top:110px}
+.mat{background:#fff;padding:clamp(10px,1.6vw,22px);min-height:140px;box-shadow:0 1px 2px rgba(20,16,12,.08),0 28px 60px rgba(20,16,12,.12);transition:transform .5s cubic-bezier(.2,.7,.2,1),box-shadow .5s}
+.work:hover .mat{transform:translateY(-4px);box-shadow:0 1px 2px rgba(20,16,12,.08),0 40px 80px rgba(20,16,12,.18)}
+.work img{display:block;width:100%;height:auto;opacity:0;transition:opacity .8s}.work img.ready{opacity:1}
+.label{margin-top:22px;max-width:360px;font-size:13px;color:var(--muted);line-height:1.6}
+.label strong{display:block;font-family:var(--serif);font-weight:400;font-style:italic;font-size:27px;line-height:1.15;color:var(--ink)}
+.label span{display:block;margin-top:2px}
 
-.statement{max-width:1000px;margin:0 auto;text-align:center;padding:170px 24px}
-.statement p{font-family:var(--serif);font-style:italic;font-size:clamp(30px,4.2vw,58px);line-height:1.18}
+.catalog{list-style:none;border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:44px 84px 1.3fr 1.2fr 70px;gap:22px;align-items:center;width:100%;padding:14px 4px;border-bottom:1px solid var(--line);text-align:left;transition:background .2s}
+.row:hover{background:var(--alt)}
+.row img{width:84px;height:62px;object-fit:cover;background:var(--alt)}
+.row b{font-family:var(--serif);font-weight:400;font-size:26px;line-height:1.1}
+.row span{font-size:14px;color:var(--muted)}.row .n,.row .y{font-size:13px}.row .y{text-align:right}
 
-.about{display:grid;grid-template-columns:.65fr 1.35fr;gap:10vw;border-top:1px solid var(--line);padding-top:48px}
-.about h3{font-family:var(--serif);font-size:42px;font-weight:400;line-height:1.1}
-.about p{max-width:680px;color:#5f5b54;font-size:16px;line-height:1.9}.about p+p{margin-top:24px}.about strong{font-weight:500;color:var(--ink)}
+.statement{background:var(--night);color:var(--cream);text-align:center;padding:200px 8vw}
+.statement p{max-width:960px;margin:auto;font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(34px,4.6vw,66px);line-height:1.15}
+#sobre{padding:150px 8vw 130px;display:grid;grid-template-columns:.7fr 1.3fr;gap:9vw}
+#sobre h3{font-family:var(--serif);font-weight:300;font-size:clamp(40px,4.4vw,64px);line-height:1}
+#sobre p{max-width:640px;color:#55504a;font-size:17px;line-height:1.95}#sobre p+p{margin-top:24px}#sobre strong{font-weight:500;color:var(--ink)}
+footer{background:var(--night);color:#a49d90;padding:80px 8vw 44px;display:grid;grid-template-columns:1fr auto;gap:30px;font-size:14px;scroll-margin-top:70px}
+footer h2{font-size:clamp(40px,4vw,56px);color:var(--cream);margin-bottom:22px}
+.contact{display:flex;flex-direction:column;gap:10px;align-items:flex-start}.contact a{color:var(--cream);border-bottom:1px solid transparent;transition:border-color .2s}.contact a:hover{border-color:var(--cream)}
+footer .copy{grid-column:1/-1;padding-top:30px;border-top:1px solid #2c2a27;font-size:13px}
+body:not(.open) footer{display:none}
 
-footer{padding:56px 8vw;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr auto;gap:28px;font-size:13px;color:var(--muted);scroll-margin-top:68px}
-footer h2{font-size:24px;color:var(--ink);margin-bottom:6px}
-.contact-links{display:flex;gap:10px 30px;flex-wrap:wrap;align-items:center}
-.contact-links a{color:var(--ink);transition:color .2s}.contact-links a:hover{color:var(--accent)}
-footer .copy{grid-column:1/-1}
-body:not(.exhibition-open) footer{display:none}
+/* Visor con cartela de la obra */
+.lightbox{position:fixed;inset:0;z-index:100;background:#0e0d0c;display:none;grid-template-columns:1fr 340px;color:var(--cream)}
+.lightbox.is-open{display:grid}
+.lb-stage{display:flex;align-items:center;justify-content:center;padding:60px 40px;min-width:0}
+.lb-stage img{max-width:100%;max-height:calc(100svh - 120px);object-fit:contain;transition:opacity .35s}.lb-stage img.loading{opacity:.12}
+.lb-side{display:flex;flex-direction:column;justify-content:flex-end;padding:40px 36px;border-left:1px solid #26231f}
+.lb-title{font-family:var(--serif);font-style:italic;font-weight:400;font-size:38px;line-height:1.1}
+.lb-meta{margin-top:10px;font-size:13px;color:#a49d90}
+.lb-desc{margin-top:22px;font-size:14px;line-height:1.85;color:#c9c2b5}
+.lb-count{margin-top:34px;font-size:13px;color:#8b8478}
+.lb-btn{position:absolute;width:46px;height:46px;border:1px solid #55504a;border-radius:50%;font-size:22px;line-height:1;color:var(--cream);transition:background .2s,color .2s}.lb-btn:hover{background:var(--cream);color:#111}
+.lb-close{top:20px;right:24px;z-index:2}.lb-prev,.lb-next{top:50%;margin-top:-23px}.lb-prev{left:22px}.lb-next{right:362px}
 
-/* Visor */
-.lightbox{position:fixed;inset:0;z-index:100;background:rgba(12,12,12,.97);display:none;align-items:center;justify-content:center;padding:40px}
-.lightbox.is-open{display:flex}
-.lightbox img{display:block;max-width:min(88vw,1200px);max-height:80vh;object-fit:contain;transition:opacity .3s}
-.lightbox img.is-loading{opacity:.15}
-.lb-btn{position:absolute;width:44px;height:44px;border:1px solid rgba(255,255,255,.45);background:transparent;color:#fff;cursor:pointer;font-size:22px;line-height:1;transition:background .2s,color .2s}
-.lb-btn:hover{background:#fff;color:#111}
-.lb-close{top:20px;right:24px}.lb-nav{top:50%;transform:translateY(-50%)}.lb-prev{left:22px}.lb-next{right:22px}
-.lb-label{position:absolute;left:26px;bottom:22px;color:#fff;max-width:60vw}
-.lb-title{display:block;font-family:var(--serif);font-size:24px;line-height:1.2}
-.lb-meta{display:block;margin-top:3px;font-size:12px;color:rgba(255,255,255,.65)}
-.lb-index{position:absolute;right:26px;bottom:26px;color:rgba(255,255,255,.6);font-size:12px}
-
-@media(max-width:800px){
-.site-header{height:62px}.nav{gap:18px;font-size:12px}
-#inicio{grid-template-columns:1fr;gap:44px;padding:104px 22px 64px;min-height:100dvh;align-content:center}
-h1{font-size:clamp(46px,15vw,76px)}.intro-copy{font-size:14px;margin-top:24px}.btn{margin-top:30px}
-.hero-art img{max-height:52svh}
-section{padding:84px 0 72px}
-.section-head,.loading-note{margin-left:20px;margin-right:20px}.section-head{margin-bottom:22px}
-.timeline{grid-template-columns:repeat(2,1fr);margin:0 16px 56px}
-.timeline-item{border-bottom:1px solid var(--line);padding:16px 15px}.timeline-item:nth-child(2n){border-right:0}
-.gallery{display:flex;flex-direction:column;gap:0}
-.work,.work:nth-child(n){display:block;margin:0 0 56px;padding:0 16px}
-.work-inner{padding:6px}.caption strong{font-size:22px}
-.statement{padding:96px 24px}
-.about{grid-template-columns:1fr;gap:24px;padding:36px 20px 0}.about h3{font-size:34px}.about p{font-size:15px}
-footer{grid-template-columns:1fr;padding:44px 20px}
-.lightbox{padding:20px 8px 90px}.lightbox img{max-width:96vw;max-height:calc(100dvh - 160px)}
-.lb-nav{top:auto;bottom:18px;transform:none}.lb-prev{left:18px}.lb-next{right:18px}.lb-close{top:12px;right:14px}
-.lb-label{left:72px;right:72px;bottom:20px;max-width:none;text-align:center}.lb-title{font-size:18px}.lb-index{right:18px;bottom:80px}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+@media(max-width:860px){
+#inicio{grid-template-columns:1fr;gap:70px;padding:40px 24px 90px;align-content:center;min-height:100dvh}
+.stage{order:-1;height:42svh;margin-top:36px}h1{font-size:clamp(50px,15vw,80px)}.lede{font-size:15px;margin-top:22px}.btn{margin-top:28px}
+.site-header{height:62px}.nav{gap:18px;font-size:13px}section{scroll-margin-top:62px}
+.opening{grid-template-columns:1fr;padding:118px 22px 40px;gap:24px}.opening p{justify-self:start;font-size:15px}
+.toolbar{top:62px;margin:0 22px}.note{margin:18px 22px 0}
+#works{padding:48px 0 90px}.gallery{display:flex;flex-direction:column;gap:0}
+.work,.work:nth-child(n){margin:0 0 70px;padding:0 16px}.mat{padding:8px}.label{padding:0 4px}
+.row{grid-template-columns:64px 1fr 52px;gap:14px;padding:12px 16px}.row .n,.row .t{display:none}.row img{width:64px;height:50px}.row b{font-size:22px}
+.catalog{margin:0}.statement{padding:110px 24px}
+#sobre{grid-template-columns:1fr;gap:26px;padding:90px 22px 80px}#sobre p{font-size:16px}
+footer{grid-template-columns:1fr;padding:60px 22px 36px}
+.lightbox.is-open{grid-template-columns:1fr;grid-template-rows:1fr auto}
+.lb-stage{padding:64px 14px 10px}.lb-stage img{max-height:calc(100dvh - 330px)}
+.lb-side{border:0;border-top:1px solid #26231f;padding:20px 22px 26px;max-height:230px;overflow:auto}.lb-title{font-size:28px}.lb-desc{margin-top:12px;font-size:13px}.lb-count{margin-top:12px}
+.lb-prev,.lb-next{top:40%}.lb-prev{left:10px}.lb-next{right:10px}.lb-btn{background:rgba(14,13,12,.6)}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
-<a class="skip" href="#obra">Ir a la obra</a>
-<header class="site-header"><a class="logo" href="#inicio" aria-label="Volver al inicio">COA</a><nav class="nav" aria-label="Principal"><a href="#obra">Obra</a><a href="#sobre">Sobre mí</a><a href="#contacto">Contacto</a></nav></header>
+<a class="skip" href="#works">Ir a la obra</a>
+<header class="site-header"><a class="logo" href="#inicio" aria-label="Volver al inicio">COA</a><nav class="nav" aria-label="Principal"><a href="#obra">Obra</a><a href="#sobre">Sobre mí</a><a href="#contacto">Contacto</a></nav><div class="progress" id="progress"></div></header>
 <main>
 <section id="inicio">
-<div class="hero-text"><p class="kicker">Pintor autodidacta</p><h1>Cristhian<br>Osorio Acosta</h1><p class="intro-copy">Una selección de obras nacidas del sentimiento, la imaginación y aquello que no siempre puede decirse con palabras.</p><a class="btn" href="#exposicion">Ver exposición</a></div>
-<figure class="hero-art"><div class="frame"><img src="thumbs/IGNICION.webp" alt="Ignición, pintura al acrílico de Cristhian Osorio Acosta" fetchpriority="high" decoding="async"></div><figcaption><em>Ignición</em> · Acrílico sobre lienzo, 2026</figcaption></figure>
+<div><p class="kicker">Exposición de pintura</p><h1>Cristhian<br><em>Osorio Acosta</em></h1><p class="lede">Pintor autodidacta. Una selección de obras nacidas del sentimiento, la imaginación y aquello que no siempre puede decirse con palabras.</p><a class="btn" href="#exposicion">Entrar a la exposición</a></div>
+<div class="stage" id="stage"><div class="stage-label"><span id="stageLabel"></span><span id="stageCount"></span></div></div>
 </section>
 
 <div id="exposicion">
-<section id="obra"><div class="section-head"><h2>Obra</h2><span class="count" id="workCount">16 obras · 2015–2026</span></div>
-<p class="loading-note">Las imágenes pueden tardar un poco en cargar debido a la calidad y resolución de las obras. Toca una obra para verla en grande.</p>
-<nav class="timeline" aria-label="Obras por año">
-<a class="timeline-item" href="#obra" data-from="2026" data-to="2026"><span class="timeline-year">2026</span><span class="timeline-count">4 obras</span></a>
-<a class="timeline-item" href="#obra" data-from="2022" data-to="2022"><span class="timeline-year">2022</span><span class="timeline-count">1 obra</span></a>
-<a class="timeline-item" href="#obra" data-from="2021" data-to="2021"><span class="timeline-year">2021</span><span class="timeline-count">3 obras</span></a>
-<a class="timeline-item" href="#obra" data-from="2019" data-to="2020"><span class="timeline-year">2020–2019</span><span class="timeline-count">2 obras</span></a>
-<a class="timeline-item" href="#obra" data-from="2015" data-to="2018"><span class="timeline-year">2018–2015</span><span class="timeline-count">6 obras</span></a>
-</nav>
-<div class="gallery" id="gallery">
-<article class="work" data-title="Ignición" data-meta="Acrílico sobre lienzo · 2026"><div class="work-inner"><img src="thumbs/IGNICION.webp" data-full="optimized/IGNICION.webp" data-original="IGNICION.png" alt="Ignición" loading="eager" fetchpriority="high" decoding="async"></div><div class="caption"><strong>Ignición</strong><span>Acrílico sobre lienzo · 2026</span></div><div class="work-description">Capas de acrílico y pinceladas gestuales. Representa el caos que pueden provocar nuestros pensamientos cuando las ideas y emociones se mezclan.</div></article>
-<article class="work" data-title="Sujeción" data-meta="Acrílico sobre lienzo · 2026"><div class="work-inner"><img src="thumbs/SUJECION.webp" data-full="optimized/SUJECION.webp" data-original="SUJECION.png" alt="Sujeción" loading="lazy" decoding="async"></div><div class="caption"><strong>Sujeción</strong><span>Acrílico sobre lienzo · 2026</span></div><div class="work-description">Habla de la cautividad psicológica y de cómo los pensamientos pueden convertirse en las propias cadenas.</div></article>
-<article class="work" data-title="Vista" data-meta="Acrílico sobre canvas · 2026"><div class="work-inner"><img src="thumbs/VISTA.webp" data-full="optimized/VISTA.webp" data-original="VISTA.png" alt="Vista" loading="lazy" decoding="async"></div><div class="caption"><strong>Vista</strong><span>Acrílico sobre canvas · 2026</span></div><div class="work-description">Explora la manera en que observamos el mundo y cómo una misma realidad puede cambiar según la mirada.</div></article>
-<article class="work" data-title="El Hogar" data-meta="Acrílico sobre canvas · 2026"><div class="work-inner"><img src="thumbs/EL%20HOGAR.webp" data-full="optimized/EL%20HOGAR.webp" data-original="EL%20HOGAR.png" alt="El Hogar" loading="lazy" decoding="async"></div><div class="caption"><strong>El Hogar</strong><span>Acrílico sobre canvas · 2026</span></div><div class="work-description">El hogar como refugio, memoria y lugar de pertenencia; un espacio sencillo cargado de recuerdos.</div></article>
-<article class="work" data-title="Azul" data-meta="Acrílico sobre canvas · 2022"><div class="work-inner"><img src="thumbs/AZUL.webp" data-full="optimized/AZUL.webp" data-original="AZUL.png" alt="Azul" loading="lazy" decoding="async"></div><div class="caption"><strong>Azul</strong><span>Acrílico sobre canvas · 2022</span></div><div class="work-description">Una exploración del azul como espacio emocional: calma, distancia y profundidad se encuentran en una misma atmósfera.</div></article>
-<article class="work" data-title="Elefante" data-meta="Acrílico sobre cartón · 2021"><div class="work-inner"><img src="thumbs/ELEFANTE.webp" data-full="optimized/ELEFANTE.webp" data-original="ELEFANTE.png" alt="Elefante" loading="lazy" decoding="async"></div><div class="caption"><strong>Elefante</strong><span>Acrílico sobre cartón · 2021</span></div><div class="work-description">Una figura poderosa y serena que habla de memoria, fuerza y presencia, llevada a un soporte cotidiano mediante el lenguaje del acrílico.</div></article>
-<article class="work" data-title="Las Empanadas de Mamá" data-meta="Acrílico sobre opalina negra · 2021"><div class="work-inner"><img src="thumbs/LAS%20EMPANADAS%20DE%20MAMA.webp" data-full="optimized/LAS%20EMPANADAS%20DE%20MAMA.webp" data-original="LAS%20EMPANADAS%20DE%20MAMA.png" alt="Las Empanadas de Mamá" loading="lazy" decoding="async"></div><div class="caption"><strong>Las Empanadas de Mamá</strong><span>Acrílico sobre opalina negra · 2021</span></div><div class="work-description">Una obra vinculada a la memoria familiar y a esos pequeños momentos cotidianos que, con el tiempo, adquieren un valor afectivo profundo.</div></article>
-<article class="work" data-title="Primavera" data-meta="Acuarela sobre opalina · 2021"><div class="work-inner"><img src="thumbs/PRIMAVERA.webp" data-full="optimized/PRIMAVERA.webp" data-original="PRIMAVERA.png" alt="Primavera" loading="lazy" decoding="async"></div><div class="caption"><strong>Primavera</strong><span>Acuarela sobre opalina · 2021</span></div><div class="work-description">Una interpretación de la renovación y el despertar. La acuarela permite que el color se vuelva ligero, delicado y cambiante.</div></article>
-<article class="work" data-title="Solitud" data-meta="Acrílico sobre canvas · 2020"><div class="work-inner"><img src="thumbs/SOLITUD.webp" data-full="optimized/SOLITUD.webp" data-original="SOLITUD.png" alt="Solitud" loading="lazy" decoding="async"></div><div class="caption"><strong>Solitud</strong><span>Acrílico sobre canvas · 2020</span></div><div class="work-description">Un espacio para la soledad contemplativa: el silencio, la distancia y la introspección convertidos en una escena de carácter íntimo.</div></article>
-<article class="work" data-title="Vértigo" data-meta="Acrílico sobre lienzo · 2019"><div class="work-inner"><img src="thumbs/VERTIGO.webp" data-full="optimized/VERTIGO.webp" data-original="VERTIGO.png" alt="Vértigo" loading="lazy" decoding="async"></div><div class="caption"><strong>Vértigo</strong><span>Acrílico sobre lienzo · 2019</span></div><div class="work-description">Una aproximación a la sensación de perder el equilibrio frente a lo desconocido; movimiento, tensión y profundidad construyen una experiencia inquietante.</div></article>
-<article class="work" data-title="Navegante" data-meta="Acrílico sobre canvas · 2018"><div class="work-inner"><img src="thumbs/NAVEGANTE.webp" data-full="optimized/NAVEGANTE.webp" data-original="NAVEGANTE.png" alt="Navegante" loading="lazy" decoding="async"></div><div class="caption"><strong>Navegante</strong><span>Acrílico sobre canvas · 2018</span></div><div class="work-description">Representa el impulso de avanzar aun sin conocer completamente el destino. El viaje aparece como metáfora de búsqueda y descubrimiento personal.</div></article>
-<article class="work" data-title="Tierra" data-meta="Acrílico sobre opalina · 2018"><div class="work-inner"><img src="thumbs/TIERRA.webp" data-full="optimized/TIERRA.webp" data-original="TIERRA.png" alt="Tierra" loading="lazy" decoding="async"></div><div class="caption"><strong>Tierra</strong><span>Acrílico sobre opalina · 2018</span></div><div class="work-description">Una mirada hacia el origen y lo esencial. La tierra aparece como materia, raíz y vínculo con aquello que permanece.</div></article>
-<article class="work" data-title="Compañía" data-meta="Acrílico sobre opalina · 2017"><div class="work-inner"><img src="thumbs/COMPAÑIA.webp" data-full="optimized/COMPAÑIA.webp" data-original="COMPAÑIA.jpeg" alt="Compañía" loading="lazy" decoding="async"></div><div class="caption"><strong>Compañía</strong><span>Acrílico sobre opalina · 2017</span></div><div class="work-description">Una reflexión sobre la presencia de otros en nuestra vida: aquello que acompaña, sostiene y transforma incluso en los momentos de silencio.</div></article>
-<article class="work" data-title="Cosmos" data-meta="Acrílico sobre cartón · 2017"><div class="work-inner"><img src="thumbs/COSMOS.webp" data-full="optimized/COSMOS.webp" data-original="COSMOS.png" alt="Cosmos" loading="lazy" decoding="async"></div><div class="caption"><strong>Cosmos</strong><span>Acrílico sobre cartón · 2017</span></div><div class="work-description">Una exploración de lo inmenso y desconocido. El universo se convierte en un símbolo de misterio, imaginación y nuestra pequeña existencia dentro de él.</div></article>
-<article class="work" data-title="Orión" data-meta="Acrílico sobre lienzo · 2017"><div class="work-inner"><img src="thumbs/ORION.webp" data-full="optimized/ORION.webp" data-original="ORION.png" alt="Orión" loading="lazy" decoding="async"></div><div class="caption"><strong>Orión</strong><span>Acrílico sobre lienzo · 2017</span></div><div class="work-description">Inspirada en la presencia de la constelación de Orión, esta obra lleva la mirada hacia el cielo y hacia la fascinación humana por las estrellas.</div></article>
-<article class="work" data-title="Florero de Pame" data-meta="Acrílico · 2015"><div class="work-inner"><img src="thumbs/EL%20FLORERO%20DE%20PAME.webp" data-full="optimized/EL%20FLORERO%20DE%20PAME.webp" data-original="EL%20FLORERO%20DE%20PAME.png" alt="Florero de Pame" loading="lazy" decoding="async"></div><div class="caption"><strong>Florero de Pame</strong><span>Acrílico · 2015</span></div><div class="work-description">Una obra temprana construida desde la observación de un objeto cotidiano. El florero se convierte en un ejercicio de color, forma y memoria.</div></article>
-</div></section>
-
+<section id="obra">
+<div class="opening"><h2>Obra</h2><p>Dieciséis pinturas realizadas entre 2015 y 2026, ordenadas de la más reciente a la más antigua. Toca una obra para verla en grande y leer su ficha.</p></div>
+<div class="toolbar"><div class="filters" id="filters" role="group" aria-label="Filtrar por año"></div><div class="views" role="group" aria-label="Vista"><button type="button" data-view="gallery" aria-pressed="true">Galería</button><button type="button" data-view="catalog" aria-pressed="false">Índice</button></div></div>
+<p class="note">Las imágenes pueden tardar un poco en cargar debido a la calidad y resolución de las obras.</p>
+<div id="works"></div>
+</section>
 <section class="statement" aria-label="Declaración del artista"><p>“Pinto aquello que no siempre puede decirse, pero que insiste en ser sentido.”</p></section>
-
-<section id="sobre"><div class="about"><h3>Sobre el artista</h3><div><p>Me considero un pintor de nacimiento. Cuando tenía apenas 6 años, mi padre me ponía a pintar la luna. Con el paso del tiempo he llegado a pensar que quizá aquel gesto de mi infancia fue un pequeño prólogo, un posible designio de Dios que me acercó desde muy temprano al lenguaje de la pintura.</p><p>Hoy tengo 26 años y muchas de las obras que he creado a lo largo de mi vida se han perdido. Las pocas que aún conservo conmigo son parte de esta exposición: fragmentos de distintas etapas, emociones y momentos que lograron permanecer.</p><p>Me atraen especialmente el surrealismo y el arte abstracto. En ellos encuentro libertad para transformar pensamientos, emociones y experiencias en formas, colores y símbolos. Para mí, pintar no es solamente crear una imagen: es sentirla primero. <strong>Pintar con sentimiento es mi pasión.</strong></p></div></div></section>
+<section id="sobre"><h3>Sobre el artista</h3><div><p>Me considero un pintor de nacimiento. Cuando tenía apenas 6 años, mi padre me ponía a pintar la luna. Con el paso del tiempo he llegado a pensar que quizá aquel gesto de mi infancia fue un pequeño prólogo, un posible designio de Dios que me acercó desde muy temprano al lenguaje de la pintura.</p><p>Hoy tengo 26 años y muchas de las obras que he creado a lo largo de mi vida se han perdido. Las pocas que aún conservo conmigo son parte de esta exposición: fragmentos de distintas etapas, emociones y momentos que lograron permanecer.</p><p>Me atraen especialmente el surrealismo y el arte abstracto. En ellos encuentro libertad para transformar pensamientos, emociones y experiencias en formas, colores y símbolos. Para mí, pintar no es solamente crear una imagen: es sentirla primero. <strong>Pintar con sentimiento es mi pasión.</strong></p></div></section>
 </div>
 </main>
+<footer id="contacto"><div><h2>Contacto</h2><div class="contact"><a href="https://wa.me/50496775363" target="_blank" rel="noopener">WhatsApp · +504 9677-5363</a><a href="mailto:cristhianosorio503@gmail.com">cristhianosorio503@gmail.com</a><a href="https://instagram.com/Cristh_____" target="_blank" rel="noopener">Instagram · @Cristh_____</a></div></div><span class="copy">© 2026 Cristhian Osorio Acosta</span></footer>
 
-<footer id="contacto"><div><h2>Contacto</h2><div class="contact-links"><a href="https://wa.me/50496775363" target="_blank" rel="noopener">WhatsApp · +504 9677-5363</a><a href="mailto:cristhianosorio503@gmail.com">cristhianosorio503@gmail.com</a><a href="https://instagram.com/Cristh_____" target="_blank" rel="noopener">Instagram · @Cristh_____</a></div></div><span class="copy">© 2026 Cristhian Osorio Acosta</span></footer>
-
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Visor de obra">
+<div class="lightbox" id="lb" role="dialog" aria-modal="true" aria-label="Visor de obra">
 <button class="lb-btn lb-close" id="lbClose" type="button" aria-label="Cerrar">×</button>
-<button class="lb-btn lb-nav lb-prev" id="lbPrev" type="button" aria-label="Obra anterior">‹</button>
-<img id="lbImage" src="" alt="">
-<button class="lb-btn lb-nav lb-next" id="lbNext" type="button" aria-label="Obra siguiente">›</button>
-<div class="lb-label" aria-live="polite"><span class="lb-title" id="lbTitle"></span><span class="lb-meta" id="lbMeta"></span></div>
-<div class="lb-index" id="lbIndex"></div>
+<button class="lb-btn lb-prev" id="lbPrev" type="button" aria-label="Obra anterior">‹</button>
+<div class="lb-stage"><img id="lbImg" src="" alt=""></div>
+<button class="lb-btn lb-next" id="lbNext" type="button" aria-label="Obra siguiente">›</button>
+<aside class="lb-side" aria-live="polite"><h3 class="lb-title" id="lbTitle"></h3><p class="lb-meta" id="lbMeta"></p><p class="lb-desc" id="lbDesc"></p><p class="lb-count" id="lbCount"></p></aside>
 </div>
 
 <script>
 (()=>{
 const d=document,body=d.body,$=s=>d.querySelector(s);
-d.documentElement.classList.add('js');
-const lb=$('#lightbox'),img=$('#lbImage'),ttl=$('#lbTitle'),meta=$('#lbMeta'),idx=$('#lbIndex'),btnClose=$('#lbClose'),btnPrev=$('#lbPrev'),btnNext=$('#lbNext');
-const works=[...d.querySelectorAll('.work')];
-let cur=0,lastFocus=null,savedY=0;
+/* Obras: [archivo base (igual que en el repositorio), título, técnica, año, descripción, extensión original] */
+const W=[
+['IGNICION','Ignición','Acrílico sobre lienzo',2026,'Capas de acrílico y pinceladas gestuales. Representa el caos que pueden provocar nuestros pensamientos cuando las ideas y emociones se mezclan.','.png'],
+['SUJECION','Sujeción','Acrílico sobre lienzo',2026,'Habla de la cautividad psicológica y de cómo los pensamientos pueden convertirse en las propias cadenas.','.png'],
+['VISTA','Vista','Acrílico sobre canvas',2026,'Explora la manera en que observamos el mundo y cómo una misma realidad puede cambiar según la mirada.','.png'],
+['EL%20HOGAR','El Hogar','Acrílico sobre canvas',2026,'El hogar como refugio, memoria y lugar de pertenencia; un espacio sencillo cargado de recuerdos.','.png'],
+['AZUL','Azul','Acrílico sobre canvas',2022,'Una exploración del azul como espacio emocional: calma, distancia y profundidad se encuentran en una misma atmósfera.','.png'],
+['ELEFANTE','Elefante','Acrílico sobre cartón',2021,'Una figura poderosa y serena que habla de memoria, fuerza y presencia, llevada a un soporte cotidiano mediante el lenguaje del acrílico.','.png'],
+['LAS%20EMPANADAS%20DE%20MAMA','Las Empanadas de Mamá','Acrílico sobre opalina negra',2021,'Una obra vinculada a la memoria familiar y a esos pequeños momentos cotidianos que, con el tiempo, adquieren un valor afectivo profundo.','.png'],
+['PRIMAVERA','Primavera','Acuarela sobre opalina',2021,'Una interpretación de la renovación y el despertar. La acuarela permite que el color se vuelva ligero, delicado y cambiante.','.png'],
+['SOLITUD','Solitud','Acrílico sobre canvas',2020,'Un espacio para la soledad contemplativa: el silencio, la distancia y la introspección convertidos en una escena de carácter íntimo.','.png'],
+['VERTIGO','Vértigo','Acrílico sobre lienzo',2019,'Una aproximación a la sensación de perder el equilibrio frente a lo desconocido; movimiento, tensión y profundidad construyen una experiencia inquietante.','.png'],
+['NAVEGANTE','Navegante','Acrílico sobre canvas',2018,'Representa el impulso de avanzar aun sin conocer completamente el destino. El viaje aparece como metáfora de búsqueda y descubrimiento personal.','.png'],
+['TIERRA','Tierra','Acrílico sobre opalina',2018,'Una mirada hacia el origen y lo esencial. La tierra aparece como materia, raíz y vínculo con aquello que permanece.','.png'],
+['COMPAÑIA','Compañía','Acrílico sobre opalina',2017,'Una reflexión sobre la presencia de otros en nuestra vida: aquello que acompaña, sostiene y transforma incluso en los momentos de silencio.','.jpeg'],
+['COSMOS','Cosmos','Acrílico sobre cartón',2017,'Una exploración de lo inmenso y desconocido. El universo se convierte en un símbolo de misterio, imaginación y nuestra pequeña existencia dentro de él.','.png'],
+['ORION','Orión','Acrílico sobre lienzo',2017,'Inspirada en la presencia de la constelación de Orión, esta obra lleva la mirada hacia el cielo y hacia la fascinación humana por las estrellas.','.png'],
+['EL%20FLORERO%20DE%20PAME','Florero de Pame','Acrílico',2015,'Una obra temprana construida desde la observación de un objeto cotidiano. El florero se convierte en un ejercicio de color, forma y memoria.','.png']
+].map(([f,t,m,y,x,e])=>({thumb:'thumbs/'+f+'.webp',full:'optimized/'+f+'.webp',orig:f+e,title:t,tech:m,year:y,desc:x}));
 
-/* Obras: accesibilidad, año y carga con fundido (con respaldo al archivo original) */
-works.forEach(w=>{
-  w.tabIndex=0;w.setAttribute('role','button');w.setAttribute('aria-label','Ver '+w.dataset.title+' en grande');
-  w.dataset.year=w.dataset.meta.match(/\d{4}$/)[0];
-  const im=w.querySelector('img'),ready=()=>im.classList.add('is-ready');
-  im.addEventListener('error',()=>{const o=im.dataset.original;if(o&&!im.dataset.tried){im.dataset.tried=1;im.src=o}else ready()});
-  im.addEventListener('load',ready);
-  if(im.complete&&im.naturalWidth)ready();
-  w.addEventListener('click',()=>openBox(w));
-  w.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openBox(w)}});
-});
-$('#workCount').textContent=works.length+' obras · '+Math.min(...works.map(w=>+w.dataset.year))+'–'+Math.max(...works.map(w=>+w.dataset.year));
+const esc=s=>s.replace(/&/g,'&amp;').replace(/"/g,'&quot;');
+const obras=n=>n+(n===1?' obra':' obras');
+
+/* Imagen con respaldo: thumbs → original */
+function fallback(im,o){im.addEventListener('error',()=>{if(!im.dataset.t){im.dataset.t=1;im.src=o}else im.classList.add('ready')});im.addEventListener('load',()=>im.classList.add('ready'));if(im.complete&&im.naturalWidth)im.classList.add('ready')}
+
+/* Portada: obras que se alternan */
+const stage=$('#stage'),sl=$('#stageLabel'),sc=$('#stageCount');
+const hero=[0,14,4,5,9].map(i=>W[i]);let hi=0;
+const hImgs=hero.map((w,i)=>{const im=new Image();im.src=w.thumb;im.alt=w.title+', '+w.tech.toLowerCase()+', '+w.year;im.decoding='async';if(!i)im.fetchPriority='high';stage.prepend(im);return im});
+function slide(n){hi=n;hImgs.forEach((im,i)=>im.classList.toggle('on',i===n));const w=hero[n];sl.innerHTML='<em>'+w.title+'</em> · '+w.tech+', '+w.year;sc.textContent=(n+1)+' / '+hero.length}
+slide(0);
+if(!matchMedia('(prefers-reduced-motion:reduce)').matches)setInterval(()=>{if(!body.classList.contains('open'))slide((hi+1)%hero.length)},5200);
+
+/* Exposición: filtros, galería e índice */
+const ranges=[['Todas',0,9999],['2026',2026,2026],['2022',2022,2022],['2021',2021,2021],['2019–2020',2019,2020],['2015–2018',2015,2018]];
+let range=ranges[0],view='gallery',list=W;
+const filters=$('#filters'),box=$('#works');
+filters.innerHTML=ranges.map((r,i)=>'<button class="chip" type="button" data-i="'+i+'" aria-pressed="'+(i===0)+'">'+r[0]+' <small>'+W.filter(w=>w.year>=r[1]&&w.year<=r[2]).length+'</small></button>').join('');
+function render(){
+  list=W.filter(w=>w.year>=range[1]&&w.year<=range[2]);
+  box.innerHTML=view==='gallery'
+   ?'<div class="gallery">'+list.map((w,i)=>'<article class="work" data-i="'+i+'" tabindex="0" role="button" aria-label="Ver '+esc(w.title)+' en grande"><div class="mat"><img src="'+w.thumb+'" alt="'+esc(w.title)+'" loading="'+(i<2?'eager':'lazy')+'" decoding="async"></div><div class="label"><strong>'+w.title+'</strong><span>'+w.tech+', '+w.year+'</span></div></article>').join('')+'</div>'
+   :'<ol class="catalog">'+list.map((w,i)=>'<li><button class="row" type="button" data-i="'+i+'"><span class="n">'+String(i+1).padStart(2,'0')+'</span><img src="'+w.thumb+'" alt="" loading="lazy"><b>'+w.title+'</b><span class="t">'+w.tech+'</span><span class="y">'+w.year+'</span></button></li>').join('')+'</ol>';
+  box.querySelectorAll('img').forEach(im=>fallback(im,list[+im.closest('[data-i]').dataset.i].orig));
+  box.querySelectorAll('[data-i]').forEach(el=>{el.onclick=()=>openBox(+el.dataset.i);el.onkeydown=e=>{if(e.target===el&&(e.key==='Enter'||e.key===' ')){e.preventDefault();openBox(+el.dataset.i)}}});
+}
+filters.onclick=e=>{const b=e.target.closest('.chip');if(!b)return;range=ranges[+b.dataset.i];filters.querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-pressed',c===b));render()};
+d.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>{view=b.dataset.view;d.querySelectorAll('[data-view]').forEach(x=>x.setAttribute('aria-pressed',x===b));render()});
+render();
 
 /* Visor */
-const wrap=i=>(i+works.length)%works.length;
+const lb=$('#lb'),img=$('#lbImg'),bC=$('#lbClose'),bP=$('#lbPrev'),bN=$('#lbNext');
+let cur=0,last=null,y0=0;
+const wrap=i=>(i+list.length)%list.length;
 function show(i){
-  cur=wrap(i);const w=works[cur],t=w.querySelector('img'),fb=t.dataset.original||t.getAttribute('src');
-  img.classList.add('is-loading');
-  img.onload=()=>img.classList.remove('is-loading');
-  img.onerror=()=>{if(!img.src.endsWith(fb))img.src=fb;else img.classList.remove('is-loading')};
-  img.src=t.dataset.full||t.getAttribute('src');img.alt=t.alt;
-  ttl.textContent=w.dataset.title;meta.textContent=w.dataset.meta;
-  idx.textContent=String(cur+1).padStart(2,'0')+' / '+String(works.length).padStart(2,'0');
-  const n=works[wrap(cur+1)].querySelector('img');(new Image).src=n.dataset.full||n.getAttribute('src');
+  cur=wrap(i);const w=list[cur];img.classList.add('loading');
+  img.onload=()=>img.classList.remove('loading');
+  img.onerror=()=>{if(!img.src.endsWith(w.orig))img.src=w.orig;else img.classList.remove('loading')};
+  img.src=w.full;img.alt=w.title;
+  $('#lbTitle').textContent=w.title;$('#lbMeta').textContent=w.tech+', '+w.year;$('#lbDesc').textContent=w.desc;
+  $('#lbCount').textContent=String(cur+1).padStart(2,'0')+' / '+String(list.length).padStart(2,'0');
+  (new Image).src=list[wrap(cur+1)].full;
 }
-function openBox(w){lastFocus=d.activeElement;savedY=scrollY;body.style.overflow='hidden';lb.classList.add('is-open');show(works.indexOf(w));btnClose.focus()}
-function closeBox(){lb.classList.remove('is-open');body.style.overflow='';img.onload=img.onerror=null;img.removeAttribute('src');scrollTo({top:savedY,behavior:'instant'});lastFocus&&lastFocus.focus({preventScroll:true})}
-btnClose.onclick=closeBox;btnPrev.onclick=()=>show(cur-1);btnNext.onclick=()=>show(cur+1);
-lb.addEventListener('click',e=>{if(e.target===lb)closeBox()});
+function openBox(i){last=d.activeElement;y0=scrollY;body.style.overflow='hidden';lb.classList.add('is-open');show(i);bC.focus()}
+function closeBox(){lb.classList.remove('is-open');body.style.overflow='';img.onload=img.onerror=null;img.removeAttribute('src');scrollTo({top:y0,behavior:'instant'});last&&last.focus({preventScroll:true})}
+bC.onclick=closeBox;bP.onclick=()=>show(cur-1);bN.onclick=()=>show(cur+1);
 d.addEventListener('keydown',e=>{
   if(!lb.classList.contains('is-open'))return;
-  if(e.key==='Escape')closeBox();
-  if(e.key==='ArrowLeft')show(cur-1);
-  if(e.key==='ArrowRight')show(cur+1);
-  if(e.key==='Tab'){const f=[btnClose,btnPrev,btnNext],i=f.indexOf(d.activeElement);e.preventDefault();f[(i+(e.shiftKey?-1:1)+f.length)%f.length].focus()}
+  if(e.key==='Escape')closeBox();if(e.key==='ArrowLeft')show(cur-1);if(e.key==='ArrowRight')show(cur+1);
+  if(e.key==='Tab'){const f=[bC,bP,bN],i=f.indexOf(d.activeElement);e.preventDefault();f[(i+(e.shiftKey?-1:1)+3)%3].focus()}
 });
-let sx=0;
-lb.addEventListener('touchstart',e=>sx=e.changedTouches[0].screenX,{passive:true});
+let sx=0;lb.addEventListener('touchstart',e=>sx=e.changedTouches[0].screenX,{passive:true});
 lb.addEventListener('touchend',e=>{const dx=e.changedTouches[0].screenX-sx;if(Math.abs(dx)>45)show(cur+(dx<0?1:-1))},{passive:true});
 
-/* Línea de tiempo: salta a la primera obra del rango */
-const items=[...d.querySelectorAll('.timeline-item')];
-items.forEach(it=>it.addEventListener('click',e=>{
-  e.preventDefault();
-  const a=+it.dataset.from,b=+it.dataset.to,w=works.find(x=>+x.dataset.year>=a&&+x.dataset.year<=b);
-  items.forEach(i=>i.classList.toggle('is-active',i===it));
-  w&&w.scrollIntoView({behavior:'smooth',block:'center'});
-}));
+/* Progreso de lectura */
+const bar=$('#progress');
+addEventListener('scroll',()=>{const h=d.documentElement.scrollHeight-innerHeight;bar.style.width=(h>0?scrollY/h*100:0)+'%'},{passive:true});
 
-/* Navegación entre portada y exposición (el botón Atrás funciona) */
+/* Navegación portada ↔ exposición (el botón Atrás funciona) */
 const inside=['#exposicion','#obra','#sobre'];
 function route(){
-  const h=location.hash;
-  if(h==='#contacto')return;
-  const on=inside.includes(h);
-  body.classList.toggle('exhibition-open',on);
-  if(!on||h==='#exposicion')scrollTo({top:0,behavior:'instant'});
-  else{const t=$(h);t&&t.scrollIntoView()}
+  const h=location.hash;if(h==='#contacto')return;
+  const on=inside.includes(h);body.classList.toggle('open',on);
+  if(!on||h==='#exposicion')scrollTo({top:0,behavior:'instant'});else{const t=$(h);t&&t.scrollIntoView()}
 }
 addEventListener('hashchange',route);route();
 })();
