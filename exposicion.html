@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#f4f1eb">
+<title>Exposición — Cristhian Osorio Acosta</title>
+<style>
+html,body{margin:0;width:100%;height:100%;background:#f4f1eb}#loader{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#f4f1eb;color:#77726a;font:9px Arial,sans-serif;letter-spacing:.22em;text-transform:uppercase;z-index:10;transition:opacity .5s}#loader.hide{opacity:0;pointer-events:none}#error{display:none;text-align:center;font:12px Arial,sans-serif;color:#77726a;padding:40px}#error a{color:#171717}iframe{display:block;width:100%;height:100%;border:0}
+</style>
+</head>
+<body>
+<div id="loader">Preparando exposición</div>
+<div id="error">No se pudo cargar la exposición.<br><br><a href="https://github.com/COA-SISTEMAS/cristhian-osorio-acosta/commit/cdcf5aa9cd86fd4fa93458b8eb924522d68f0648">Abrir versión de la exposición</a></div>
+<iframe id="expo" title="Exposición artística de Cristhian Osorio Acosta" src="https://raw.githubusercontent.com/COA-SISTEMAS/cristhian-osorio-acosta/cdcf5aa9cd86fd4fa93458b8eb924522d68f0648/index.html"></iframe>
+<script>
+const frame=document.getElementById('expo'),loader=document.getElementById('loader'),error=document.getElementById('error');
+frame.addEventListener('load',()=>{loader.classList.add('hide')});
+frame.addEventListener('error',()=>{loader.style.display='none';error.style.display='block'});
+setTimeout(()=>loader.classList.add('hide'),3500);
+</script>
+</body>
+</html>
