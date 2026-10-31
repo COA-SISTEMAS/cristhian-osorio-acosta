@@ -7,7 +7,8 @@ on:
       - '*.png'
       - '*.jpg'
       - '*.jpeg'
-      - '*.webp'
+      - 'index.html'
+      - '.github/workflows/optimize-images.yml'
 
 permissions:
   contents: write
@@ -27,7 +28,7 @@ jobs:
       - name: Instalar Sharp
         run: npm install --no-save sharp@0.33.5
 
-      - name: Generar versiones WebP optimizadas
+      - name: Generar miniaturas y versiones WebP
         run: |
           node <<'NODE'
           const fs = require('fs');
@@ -35,18 +36,32 @@ jobs:
           const sharp = require('sharp');
 
           const files = fs.readdirSync('.').filter(file => /\.(png|jpe?g)$/i.test(file));
+          fs.mkdirSync('thumbs', { recursive: true });
+          fs.mkdirSync('optimized', { recursive: true });
 
           (async () => {
             for (const file of files) {
-              const output = file.replace(/\.(png|jpe?g)$/i, '.webp');
-              await sharp(file)
-                .resize({ width: 2400, height: 2400, fit: 'inside', withoutEnlargement: true })
-                .webp({ quality: 82, effort: 6 })
-                .toFile(output);
+              const stat = fs.statSync(file);
+              if (stat.size < 100) {
+                console.log(`Omitido por tamaño: ${file}`);
+                continue;
+              }
 
-              const originalSize = fs.statSync(file).size;
-              const optimizedSize = fs.statSync(output).size;
-              console.log(`${file}: ${Math.round(originalSize / 1024)} KB -> ${Math.round(optimizedSize / 1024)} KB`);
+              const base = path.basename(file, path.extname(file));
+              const thumb = path.join('thumbs', `${base}.webp`);
+              const full = path.join('optimized', `${base}.webp`);
+
+              await sharp(file)
+                .resize({ width: 800, height: 800, fit: 'inside', withoutEnlargement: true })
+                .webp({ quality: 76, effort: 6 })
+                .toFile(thumb);
+
+              await sharp(file)
+                .resize({ width: 1800, height: 1800, fit: 'inside', withoutEnlargement: true })
+                .webp({ quality: 84, effort: 6 })
+                .toFile(full);
+
+              console.log(`${file} -> ${thumb} + ${full}`);
             }
           })().catch(error => { console.error(error); process.exit(1); });
           NODE
@@ -55,6 +70,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add '*.webp'
-          git diff --cached --quiet || git commit -m "Genera versiones WebP optimizadas"
+          git add thumbs optimized
+          git diff --cached --quiet || git commit -m "Genera miniaturas y WebP optimizados"
           git push
