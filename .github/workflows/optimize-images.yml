@@ -1,0 +1,60 @@
+name: Optimizar imágenes de la exposición
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '*.png'
+      - '*.jpg'
+      - '*.jpeg'
+      - '*.webp'
+
+permissions:
+  contents: write
+
+jobs:
+  optimize:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Instalar Sharp
+        run: npm install --no-save sharp@0.33.5
+
+      - name: Generar versiones WebP optimizadas
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          const path = require('path');
+          const sharp = require('sharp');
+
+          const files = fs.readdirSync('.').filter(file => /\.(png|jpe?g)$/i.test(file));
+
+          (async () => {
+            for (const file of files) {
+              const output = file.replace(/\.(png|jpe?g)$/i, '.webp');
+              await sharp(file)
+                .resize({ width: 2400, height: 2400, fit: 'inside', withoutEnlargement: true })
+                .webp({ quality: 82, effort: 6 })
+                .toFile(output);
+
+              const originalSize = fs.statSync(file).size;
+              const optimizedSize = fs.statSync(output).size;
+              console.log(`${file}: ${Math.round(originalSize / 1024)} KB -> ${Math.round(optimizedSize / 1024)} KB`);
+            }
+          })().catch(error => { console.error(error); process.exit(1); });
+          NODE
+
+      - name: Guardar versiones optimizadas
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add '*.webp'
+          git diff --cached --quiet || git commit -m "Genera versiones WebP optimizadas"
+          git push
