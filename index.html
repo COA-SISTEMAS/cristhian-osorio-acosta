@@ -22,20 +22,20 @@
     .eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.25em;color:var(--muted);margin-bottom:28px}
     h1{font-family:'Playfair Display',serif;font-size:clamp(58px,9vw,125px);font-weight:400;line-height:.9;letter-spacing:-.055em}
     .intro{max-width:500px;margin-top:42px;font-size:16px;color:#5f5b55}
-    .hero-art{height:72vh;min-height:520px;background:#171717;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-    .hero-art img{display:block;width:auto;height:auto;max-width:100%;max-height:100%;object-fit:contain;image-rendering:auto}
-    .hero-art::after{content:'OBRA / 01';position:absolute;bottom:20px;left:22px;font-size:10px;letter-spacing:.18em;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.6)}
+    .hero-art{position:relative;overflow:hidden;background:transparent;line-height:0}
+    .hero-art img{display:block;width:100%;height:auto;max-width:100%;object-fit:contain;image-rendering:auto}
+    .hero-art::after{content:'OBRA / 01';position:absolute;bottom:20px;left:22px;font-size:10px;line-height:1.2;letter-spacing:.18em;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.75)}
     section{padding:120px 8vw}
     .section-head{display:flex;justify-content:space-between;align-items:end;border-bottom:1px solid var(--line);padding-bottom:20px;margin-bottom:55px}
     h2{font-family:'Playfair Display',serif;font-size:clamp(38px,5vw,70px);font-weight:400}
     .count{font-size:11px;color:var(--muted);letter-spacing:.15em}
     .gallery{display:grid;grid-template-columns:repeat(12,1fr);gap:24px}
-    .work{background:var(--card);min-height:520px;position:relative;overflow:hidden;cursor:pointer}
+    .work{background:var(--card);position:relative;overflow:hidden;cursor:pointer}
     .work:nth-child(1){grid-column:span 7}.work:nth-child(2){grid-column:span 5;margin-top:110px}.work:nth-child(3){grid-column:span 5}.work:nth-child(4){grid-column:span 7;margin-top:100px}
-    .work-inner{height:100%;min-height:520px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#dedbd4}
-    .work-inner img{display:block;width:auto;height:auto;max-width:100%;max-height:520px;object-fit:contain;image-rendering:auto}
+    .work-inner{display:flex;align-items:center;justify-content:center;overflow:hidden;background:transparent;line-height:0}
+    .work-inner img{display:block;width:100%;height:auto;max-width:100%;object-fit:contain;image-rendering:auto;transition:transform .5s ease}
     .work:hover .work-inner img{transform:scale(1.01)}
-    .caption{position:absolute;bottom:0;left:0;right:0;padding:25px;background:linear-gradient(transparent,rgba(0,0,0,.72));color:white;padding-top:80px}
+    .caption{position:absolute;bottom:0;left:0;right:0;padding:25px;background:linear-gradient(transparent,rgba(0,0,0,.72));color:white;padding-top:80px;line-height:1.4}
     .caption strong{font-family:'Playfair Display',serif;font-size:28px;font-weight:400}.caption span{display:block;font-size:10px;letter-spacing:.16em;text-transform:uppercase;opacity:.8;margin-top:5px}
     .statement{max-width:850px;margin:auto;text-align:center;padding:160px 0}
     .statement p{font-family:'Playfair Display',serif;font-size:clamp(30px,4vw,56px);line-height:1.2}
@@ -43,7 +43,26 @@
     .about h3{font-family:'Playfair Display',serif;font-size:38px;font-weight:400}.about p{max-width:700px;color:#68645e;font-size:16px}
     .about p+p{margin-top:22px}
     footer{padding:50px 8vw;border-top:1px solid var(--line);display:flex;justify-content:space-between;font-size:11px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
-    @media(max-width:800px){header{padding:20px 5vw}nav{gap:15px;font-size:9px}.hero{grid-template-columns:1fr;padding:125px 6vw 50px}.hero-art{height:65vh;min-height:480px}.gallery{display:block}.work{margin:0 0 24px!important;min-height:520px}.work-inner{min-height:520px}.about{grid-template-columns:1fr;gap:35px}section{padding:90px 6vw}.statement{padding:100px 0}footer{padding:35px 6vw;gap:20px;flex-direction:column}}
+    @media(max-width:800px){
+      header{padding:18px 5vw}
+      nav{gap:15px;font-size:9px}
+      .hero{display:block;min-height:0;padding:105px 0 0}
+      .hero>div:first-child{padding:25px 6vw 55px}
+      .hero-art{width:100%;height:auto;min-height:0;margin:0;padding:0}
+      .hero-art img{width:100%;height:auto;max-width:none}
+      .hero-art::after{bottom:16px;left:18px}
+      .gallery{display:block}
+      .work{margin:0 0 24px!important;min-height:0;background:transparent}
+      .work-inner{min-height:0;width:100%;height:auto;background:transparent}
+      .work-inner img{width:100%;height:auto;max-width:none;max-height:none}
+      .caption{padding:22px;padding-top:75px}
+      section{padding:80px 6vw}
+      #obra{padding-left:0;padding-right:0}
+      #obra .section-head{margin-left:6vw;margin-right:6vw}
+      .statement{padding:90px 0}
+      .about{grid-template-columns:1fr;gap:35px}
+      footer{padding:35px 6vw;gap:20px;flex-direction:column}
+    }
   </style>
 </head>
 <body>
