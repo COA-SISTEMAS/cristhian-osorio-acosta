@@ -10,24 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{--paper:#f4f1eb;--ink:#171717;--muted:#77726a;--line:#d8d3ca}
-*{box-sizing:border-box;margin:0;padding:0}
-html,body{width:100%;height:100%}
-body{background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;font-weight:300;overflow:hidden}
-.entry{min-height:100svh;display:flex;align-items:center;justify-content:center;text-align:center;padding:40px;position:relative}
-.entry::before,.entry::after{content:'';position:absolute;background:var(--line)}
-.entry::before{width:1px;height:44px;top:32px;left:50%;transform:translateX(-50%)}
-.entry::after{width:44px;height:1px;bottom:32px;left:50%;transform:translateX(-50%)}
-.content{display:flex;flex-direction:column;align-items:center;max-width:720px}
-.kicker{font-size:9px;text-transform:uppercase;letter-spacing:.32em;color:var(--muted);margin-bottom:32px}
-h1{font-family:'Playfair Display',serif;font-size:clamp(52px,9vw,112px);font-weight:400;line-height:.9;letter-spacing:-.055em}
-.line{width:46px;height:1px;background:var(--ink);margin:38px 0 28px}
-.subtitle{font-size:12px;text-transform:uppercase;letter-spacing:.2em;color:var(--muted)}
-.enter{margin-top:46px;border:1px solid var(--ink);background:var(--ink);padding:15px 27px;color:#fff;font:300 9px 'DM Sans',sans-serif;text-transform:uppercase;letter-spacing:.2em;cursor:pointer;transition:transform .25s,opacity .25s;text-decoration:none;display:inline-block}
-.enter:hover,.enter:focus-visible{transform:translateY(-2px);opacity:.86;outline:none}
-.year{position:absolute;bottom:32px;left:40px;font-size:8px;letter-spacing:.2em;color:var(--muted);text-transform:uppercase}
-.signature{position:absolute;bottom:32px;right:40px;font-family:'Playfair Display',serif;font-size:12px}
-@media(max-width:600px){.entry{padding:28px}.kicker{font-size:8px;letter-spacing:.26em;margin-bottom:26px}h1{font-size:clamp(48px,15vw,76px)}.line{margin:30px 0 24px}.subtitle{font-size:9px;line-height:1.7}.enter{margin-top:38px}.year,.signature{bottom:24px}.year{left:24px}.signature{right:24px}}
+:root{--paper:#f4f1eb;--ink:#171717;--muted:#77726a;--line:#d8d3ca}*{box-sizing:border-box;margin:0;padding:0}html,body{width:100%;height:100%}body{background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;font-weight:300;overflow:hidden}.entry{min-height:100svh;display:flex;align-items:center;justify-content:center;text-align:center;padding:40px;position:relative}.entry::before,.entry::after{content:'';position:absolute;background:var(--line)}.entry::before{width:1px;height:44px;top:32px;left:50%;transform:translateX(-50%)}.entry::after{width:44px;height:1px;bottom:32px;left:50%;transform:translateX(-50%)}.content{display:flex;flex-direction:column;align-items:center;max-width:720px}.kicker{font-size:9px;text-transform:uppercase;letter-spacing:.32em;color:var(--muted);margin-bottom:32px}h1{font-family:'Playfair Display',serif;font-size:clamp(52px,9vw,112px);font-weight:400;line-height:.9;letter-spacing:-.055em}.line{width:46px;height:1px;background:var(--ink);margin:38px 0 28px}.subtitle{font-size:12px;text-transform:uppercase;letter-spacing:.2em;color:var(--muted)}.enter{margin-top:46px;border:1px solid var(--ink);background:var(--ink);padding:15px 27px;color:#fff;font:300 9px 'DM Sans',sans-serif;text-transform:uppercase;letter-spacing:.2em;cursor:pointer;text-decoration:none;display:inline-block}.enter:hover{opacity:.85;transform:translateY(-2px)}.year{position:absolute;bottom:32px;left:40px;font-size:8px;letter-spacing:.2em;color:var(--muted);text-transform:uppercase}.signature{position:absolute;bottom:32px;right:40px;font-family:'Playfair Display',serif;font-size:12px}@media(max-width:600px){.entry{padding:28px}.kicker{font-size:8px;letter-spacing:.26em;margin-bottom:26px}h1{font-size:clamp(48px,15vw,76px)}.line{margin:30px 0 24px}.subtitle{font-size:9px;line-height:1.7}.enter{margin-top:38px}.year,.signature{bottom:24px}.year{left:24px}.signature{right:24px}}
 </style>
 </head>
 <body>
@@ -37,7 +20,7 @@ h1{font-family:'Playfair Display',serif;font-size:clamp(52px,9vw,112px);font-wei
 <h1>Cristhian<br>Osorio Acosta</h1>
 <div class="line"></div>
 <div class="subtitle">Una mirada a través de la pintura · 2017—2026</div>
-<a class="enter" href="./exposicion.html" aria-label="Entrar a la galería">Entrar a la exposición</a>
+<a class="enter" href="./exposicion.html#obra" aria-label="Entrar directamente a la galería">Entrar a la galería</a>
 </div>
 <div class="year">Colección personal</div>
 <div class="signature">COA</div>
