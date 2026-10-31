@@ -16,7 +16,7 @@ jobs:
       - name: Descargar repositorio
         uses: actions/checkout@v4
 
-      - name: Agregar datos de contacto
+      - name: Agregar datos de contacto y aviso de carga
         run: |
           python - <<'PY'
           from pathlib import Path
@@ -32,16 +32,32 @@ jobs:
           @media(max-width:800px){.contact-links{gap:10px 18px}}
           """
 
+          loading_css = """
+          .loading-note{margin:-42px 0 58px;text-align:center;color:var(--muted);font-size:9px;letter-spacing:.08em}
+          @media(max-width:800px){.loading-note{margin:-14px 20px 38px;font-size:8px;line-height:1.7}}
+          """
+
           if '.contact-links{' not in text:
               text = text.replace('</style>', contact_css + '</style>', 1)
+
+          if '.loading-note{' not in text:
+              text = text.replace('</style>', loading_css + '</style>', 1)
 
           footer = '''<footer><span>© 2026 Cristhian Osorio Acosta</span><div class="contact-links"><a href="https://wa.me/50496775363" target="_blank" rel="noopener">WhatsApp · +504 9677-5363</a><a href="mailto:cristhianosorio503@gmail.com">cristhianosorio503@gmail.com</a><a href="https://instagram.com/Cristh_____" target="_blank" rel="noopener">Instagram · @Cristh_____</a></div><span>Exposición artística</span></footer>'''
 
           updated, count = re.subn(r'<footer>.*?</footer>', footer, text, count=1, flags=re.S)
           if count != 1:
               raise SystemExit('No se encontró el footer existente; no se modificó el sitio.')
+          text = updated
 
-          path.write_text(updated, encoding='utf-8')
+          notice = '<p class="loading-note">Las imágenes pueden tardar un poco en cargar debido a la calidad y resolución de las obras.</p>'
+          if 'class="loading-note"' not in text:
+              marker = '<div class="section-head"><h2>Obra</h2><span class="count" id="workCount">16 obras · 2015–2026</span></div>'
+              if marker not in text:
+                  raise SystemExit('No se encontró el encabezado de la galería; no se modificó el sitio.')
+              text = text.replace(marker, marker + notice, 1)
+
+          path.write_text(text, encoding='utf-8')
           PY
 
       - name: Guardar cambios
@@ -49,5 +65,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add index.html
-          git diff --cached --quiet || git commit -m "Agrega datos de contacto del artista"
+          git diff --cached --quiet || git commit -m "Agrega aviso de carga de imágenes"
           git push
