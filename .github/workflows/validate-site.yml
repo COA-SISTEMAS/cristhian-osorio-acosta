@@ -42,10 +42,10 @@ jobs:
           if missing:
               raise SystemExit("Faltan elementos requeridos: " + ", ".join(missing))
 
-          catalog = re.search(r"const W=\\[(.*?)\\n\\]\\.map", source, re.S)
+          catalog = re.search(r"const W=\[(.*?)\n\]\.map", source, re.S)
           if not catalog:
               raise SystemExit("No se encontró el catálogo.")
-          entries = re.findall(r"^\\['", catalog.group(1), re.M)
+          entries = re.findall(r"^\['", catalog.group(1), re.M)
           if len(entries) != 16:
               raise SystemExit(f"Catálogo incorrecto: {len(entries)} obras; se esperaban 16.")
 
