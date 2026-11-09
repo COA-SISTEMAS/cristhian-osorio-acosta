@@ -112,6 +112,19 @@ footer{grid-template-columns:1fr}
 button,a{touch-action:manipulation}.filters{overscroll-behavior-x:contain}
 .lightbox{overscroll-behavior:contain;touch-action:pan-y}
 @media(max-width:860px){.gallery{gap:44px 0}#works{padding-inline:16px}.stage-label{bottom:-32px}}
+
+/* Retrato del artista */
+.artist{display:flex;align-items:center;gap:22px;margin-top:40px;padding:26px 0 0;border-top:1px solid #2c2a27;max-width:460px}
+.artist img{width:92px;height:123px;flex:none;margin:6px;object-fit:cover;outline:1px solid var(--gold);outline-offset:5px}
+.artist small{display:block;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+.artist b{display:block;margin:4px 0 2px;font:400 27px/1.15 var(--serif);color:var(--cream);transition:color .25s}
+.artist .who-t>span{font-size:13px;color:#a49d90}.artist:hover b{color:var(--gold)}
+.portrait{margin-top:34px;max-width:340px}.portrait div{padding:9px;border:1px solid var(--gold)}
+.portrait img{display:block;width:100%;height:auto}
+.portrait figcaption{margin-top:14px;font:italic 400 24px/1.2 var(--serif);color:var(--ink)}
+.portrait figcaption span{display:block;margin-top:2px;font:300 13px var(--sans);letter-spacing:.08em;color:var(--muted)}
+@media(min-width:861px){#sobre .who{position:sticky;top:110px;align-self:start}}
+@media(max-width:860px){.artist{margin-top:28px;padding-top:20px;gap:18px}.artist img{width:72px;height:96px}.artist b{font-size:23px}.portrait{max-width:300px;margin-top:22px}}
 </style>
 </head>
 <body>
@@ -119,7 +132,7 @@ button,a{touch-action:manipulation}.filters{overscroll-behavior-x:contain}
 <header class="site-header" id="hdr"><a class="logo" href="#inicio" aria-label="Volver al inicio">COA</a><nav class="nav" aria-label="Principal"><a href="#obra">Obra</a><a href="#sobre">Sobre mí</a><a href="#contacto">Contacto</a></nav><div class="progress" id="progress"></div></header>
 <main>
 <section id="inicio">
-<div><p class="eyebrow">Exposición de pintura</p><h1>Cristhian<em>Osorio Acosta</em></h1><p class="lede">Pintor autodidacta. Una selección de obras nacidas del sentimiento, la imaginación y aquello que no siempre puede decirse con palabras.</p><div class="cta"><a class="btn fill" href="#exposicion">Entrar a la exposición</a></div><div class="facts"><div><b>18</b>Obras</div><div><b>2015–2026</b>Trayectoria</div><div><b>2</b>Técnicas</div></div></div>
+<div><p class="eyebrow">Exposición de pintura</p><h1>Cristhian<em>Osorio Acosta</em></h1><p class="lede">Pintor autodidacta. Una selección de obras nacidas del sentimiento, la imaginación y aquello que no siempre puede decirse con palabras.</p><div class="cta"><a class="btn fill" href="#exposicion">Entrar a la exposición</a></div><a class="artist" href="#sobre"><img src="retratos/cristhian-bn.webp" width="600" height="800" alt="Retrato de Cristhian Osorio Acosta" decoding="async"><span class="who-t"><small>El artista</small><b>Cristhian Osorio Acosta</b><span>Pintor autodidacta · Conócelo →</span></span></a>
 <div class="stage" id="stage"><img class="on" src="thumbs/IGNICION.webp" alt="Ignición, acrílico sobre lienzo, 2026" fetchpriority="high" decoding="async"><div class="stage-label"><span id="stageLabel"></span><span id="stageCount"></span></div></div>
 </section>
 <div id="exposicion"><section id="obra">
@@ -129,7 +142,7 @@ button,a{touch-action:manipulation}.filters{overscroll-behavior-x:contain}
 <div id="works"></div>
 </section>
 <section class="statement" aria-label="Declaración del artista"><p>“Pinto aquello que no siempre puede decirse, pero que insiste en ser sentido.”</p></section>
-<section id="sobre"><h3>Sobre el artista</h3><div><p>Me considero un pintor de nacimiento. Cuando tenía apenas 6 años, mi padre me ponía a pintar la luna. Con el paso del tiempo he llegado a pensar que quizá aquel gesto de mi infancia fue un pequeño prólogo, un posible designio de Dios que me acercó desde muy temprano al lenguaje de la pintura.</p><p>Hoy tengo 26 años y muchas de las obras que he creado a lo largo de mi vida se han perdido. Las pocas que aún conservo conmigo son parte de esta exposición: fragmentos de distintas etapas, emociones y momentos que lograron permanecer.</p><p>Me atraen especialmente el surrealismo y el arte abstracto. En ellos encuentro libertad para transformar pensamientos, emociones y experiencias en formas, colores y símbolos. Para mí, pintar no es solamente crear una imagen: es sentirla primero. <strong>Pintar con sentimiento es mi pasión.</strong></p></div></section></div>
+<section id="sobre"><div class="who"><h3>Sobre el artista</h3><figure class="portrait"><div><img src="retratos/cristhian-color.webp" width="900" height="1200" alt="Cristhian Osorio Acosta, pintor autodidacta" loading="lazy" decoding="async"></div><figcaption>Cristhian Osorio Acosta<span>Pintor autodidacta</span></figcaption></figure></div><div><p>Me considero un pintor de nacimiento. Cuando tenía apenas 6 años, mi padre me ponía a pintar la luna. Con el paso del tiempo he llegado a pensar que quizá aquel gesto de mi infancia fue un pequeño prólogo, un posible designio de Dios que me acercó desde muy temprano al lenguaje de la pintura.</p><p>Hoy tengo 26 años y muchas de las obras que he creado a lo largo de mi vida se han perdido. Las pocas que aún conservo conmigo son parte de esta exposición: fragmentos de distintas etapas, emociones y momentos que lograron permanecer.</p><p>Me atraen especialmente el surrealismo y el arte abstracto. En ellos encuentro libertad para transformar pensamientos, emociones y experiencias en formas, colores y símbolos. Para mí, pintar no es solamente crear una imagen: es sentirla primero. <strong>Pintar con sentimiento es mi pasión.</strong></p></div></section></div>
 </main>
 <footer id="contacto"><div><h2>Contacto</h2><div class="contact"><a href="https://wa.me/50496775363" target="_blank" rel="noopener">WhatsApp · +504 9677-5363</a><a href="mailto:cristhianosorio503@gmail.com">cristhianosorio503@gmail.com</a><a href="https://instagram.com/Cristh_____" target="_blank" rel="noopener">Instagram · @Cristh_____</a></div></div><span class="copy">© 2026 Cristhian Osorio Acosta</span></footer>
 <div class="lightbox" id="lb" role="dialog" aria-modal="true" aria-label="Visor de obra" aria-describedby="lbDesc">
