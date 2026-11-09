@@ -13,7 +13,7 @@
 <style>
 :root{--wall:#f5f3ef;--alt:#ebe8e2;--ink:#161514;--muted:#6f6a63;--line:#dcd7ce;--night:#121110;--cream:#efeae0;--gold:#b99a63;--accent:#9e2a2b;--serif:'Cormorant Garamond',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif;--px:clamp(20px,6vw,96px)}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-html{scroll-behavior:smooth;background:var(--night);-webkit-text-size-adjust:100%;overflow-x:clip}
+html{scrollbar-gutter:stable;overscroll-behavior-y:none;background:var(--night);-webkit-text-size-adjust:100%;overflow-x:clip}
 body{background:var(--wall);color:var(--ink);font:300 15px/1.7 var(--sans);overflow-x:clip;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 :focus-visible{outline:2px solid var(--gold);outline-offset:3px}
@@ -25,7 +25,7 @@ section,footer{scroll-margin-top:64px}
 .site-header.solid{background:rgba(245,243,239,.9);color:var(--ink);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-color:var(--line)}
 .logo{font-family:var(--serif);font-size:25px;letter-spacing:.16em}
 .nav{display:flex;gap:clamp(18px,3vw,38px);font-size:13px;letter-spacing:.06em}.nav a{opacity:.75;transition:opacity .2s}.nav a:hover{opacity:1}
-.progress{position:absolute;left:0;bottom:-1px;height:1px;background:var(--accent);width:0}
+.progress{position:absolute;left:0;bottom:-1px;height:1px;background:var(--accent);width:100%;transform:scaleX(0);transform-origin:0 0}
 /* Portada */
 #inicio{min-height:100svh;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);align-items:center;gap:5vw;padding:110px var(--px) 70px;background:radial-gradient(120% 90% at 80% 40%,#1d1a17,var(--night));color:var(--cream)}
 h1{font-family:var(--serif);font-weight:300;font-size:clamp(54px,8vw,128px);line-height:.9;letter-spacing:-.03em;margin:22px 0 0}
@@ -82,8 +82,8 @@ footer .copy{grid-column:1/-1;padding-top:28px;border-top:1px solid #2c2a27;font
 .lb-close{top:20px;right:24px;z-index:2}.lb-prev,.lb-next{top:50%;margin-top:-23px}.lb-prev{left:22px}.lb-next{right:382px}
 @media(max-width:860px){
 .nav{gap:18px}.logo{font-size:22px}
-#inicio{grid-template-columns:1fr;gap:56px;align-content:center;min-height:100dvh;padding:calc(84px + env(safe-area-inset-top)) 22px 40px}
-.stage{order:-1;height:42dvh}.lede{font-size:15px;margin-top:20px}.facts{gap:22px;margin-top:32px}.cta .btn{flex:1}
+#inicio{grid-template-columns:1fr;gap:56px;align-content:center;min-height:100svh;padding:calc(84px + env(safe-area-inset-top)) 22px 40px}
+.stage{order:-1;height:42svh}.lede{font-size:15px;margin-top:20px}.facts{gap:22px;margin-top:32px}.cta .btn{flex:1}
 .opening{grid-template-columns:1fr;gap:16px;padding:100px 20px 28px}.opening p{justify-self:start;font-size:15px}
 .toolbar{margin:0;padding:0;gap:0}.filters{flex:1;min-width:0;padding:6px 8px 6px 20px}
 .views{flex-direction:column;gap:0;padding:2px 16px 2px 14px;border-left:1px solid var(--line)}.views button{min-height:30px;padding:0}
@@ -92,13 +92,26 @@ footer .copy{grid-column:1/-1;padding-top:28px;border-top:1px solid #2c2a27;font
 #sobre{grid-template-columns:1fr;gap:24px}#sobre p{font-size:16px;line-height:1.85}
 footer{grid-template-columns:1fr}
 .lightbox.is-open{grid-template-columns:1fr;grid-template-rows:1fr auto;overscroll-behavior:contain}
-.lb-stage{padding:calc(56px + env(safe-area-inset-top)) 8px 8px}.lb-stage img{max-height:calc(100dvh - 330px - env(safe-area-inset-top))}
-.lb-side{border:0;border-top:1px solid #26231f;padding:16px 20px calc(18px + env(safe-area-inset-bottom));max-height:42dvh;overflow:auto}
+.lb-stage{padding:calc(56px + env(safe-area-inset-top)) 8px 8px}.lb-stage img{max-height:calc(100svh - 330px - env(safe-area-inset-top))}
+.lb-side{border:0;border-top:1px solid #26231f;padding:16px 20px calc(18px + env(safe-area-inset-bottom));max-height:42svh;overflow:auto}
 .lb-title{font-size:28px}.lb-desc{margin-top:10px;line-height:1.7}.lb-ask{margin-top:14px}.lb-count{margin-top:10px}
 .lb-btn{width:44px;height:44px;background:rgba(14,13,12,.65)}.lb-close{top:calc(8px + env(safe-area-inset-top));right:12px}
 .lb-prev,.lb-next{top:36%;margin-top:0}.lb-prev{left:8px}.lb-next{right:8px}}
 @media(hover:none){.work:hover .mat{transform:none}.btn:hover{background:none;color:var(--cream)}.btn.fill:hover{background:var(--cream);color:var(--night)}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}.work{opacity:1;transform:none}}
+
+/* Portada primero / exposición al entrar */
+#exposicion,.site-header{display:none}body.open #exposicion{display:block}body.open .site-header{display:flex}body.open #inicio,body:not(.open) footer{display:none}
+.site-header{background:rgba(245,243,239,.95);color:var(--ink);border-color:var(--line);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);transition:none}
+.progress{width:100%}
+/* Paspartú ajustado a cada pintura, con borde fino */
+.gallery{align-items:start}
+.mat{display:block;aspect-ratio:auto;padding:clamp(6px,.8vw,11px)}
+.mat img{display:block;width:100%;height:auto;max-width:none;max-height:none}
+.work{transform:none;transition:opacity .6s}
+button,a{touch-action:manipulation}.filters{overscroll-behavior-x:contain}
+.lightbox{overscroll-behavior:contain;touch-action:pan-y}
+@media(max-width:860px){.gallery{gap:44px 0}#works{padding-inline:16px}.stage-label{bottom:-32px}}
 </style>
 </head>
 <body>
@@ -106,17 +119,17 @@ footer{grid-template-columns:1fr}
 <header class="site-header" id="hdr"><a class="logo" href="#inicio" aria-label="Volver al inicio">COA</a><nav class="nav" aria-label="Principal"><a href="#obra">Obra</a><a href="#sobre">Sobre mí</a><a href="#contacto">Contacto</a></nav><div class="progress" id="progress"></div></header>
 <main>
 <section id="inicio">
-<div><p class="eyebrow">Exposición de pintura</p><h1>Cristhian<em>Osorio Acosta</em></h1><p class="lede">Pintor autodidacta. Una selección de obras nacidas del sentimiento, la imaginación y aquello que no siempre puede decirse con palabras.</p><div class="cta"><a class="btn fill" href="#obra">Entrar a la exposición</a><a class="btn" href="#contacto">Contacto</a></div><div class="facts"><div><b>18</b>Obras</div><div><b>2015–2026</b>Trayectoria</div><div><b>2</b>Técnicas</div></div></div>
+<div><p class="eyebrow">Exposición de pintura</p><h1>Cristhian<em>Osorio Acosta</em></h1><p class="lede">Pintor autodidacta. Una selección de obras nacidas del sentimiento, la imaginación y aquello que no siempre puede decirse con palabras.</p><div class="cta"><a class="btn fill" href="#exposicion">Entrar a la exposición</a></div><div class="facts"><div><b>18</b>Obras</div><div><b>2015–2026</b>Trayectoria</div><div><b>2</b>Técnicas</div></div></div>
 <div class="stage" id="stage"><img class="on" src="thumbs/IGNICION.webp" alt="Ignición, acrílico sobre lienzo, 2026" fetchpriority="high" decoding="async"><div class="stage-label"><span id="stageLabel"></span><span id="stageCount"></span></div></div>
 </section>
-<section id="obra">
+<div id="exposicion"><section id="obra">
 <div class="opening"><h2>Obra</h2><p>Dieciocho pinturas realizadas entre 2015 y 2026, ordenadas de la más reciente a la más antigua. Toca una obra para verla en grande y leer su ficha.</p></div>
 <div class="toolbar"><div class="filters" id="filters" role="group" aria-label="Filtrar por año"></div><div class="views" role="group" aria-label="Vista"><button type="button" data-view="gallery" aria-pressed="true">Galería</button><button type="button" data-view="catalog" aria-pressed="false">Índice</button></div></div>
 <p class="note">Las imágenes pueden tardar un poco en cargar debido a la calidad y resolución de las obras.</p>
 <div id="works"></div>
 </section>
 <section class="statement" aria-label="Declaración del artista"><p>“Pinto aquello que no siempre puede decirse, pero que insiste en ser sentido.”</p></section>
-<section id="sobre"><h3>Sobre el artista</h3><div><p>Me considero un pintor de nacimiento. Cuando tenía apenas 6 años, mi padre me ponía a pintar la luna. Con el paso del tiempo he llegado a pensar que quizá aquel gesto de mi infancia fue un pequeño prólogo, un posible designio de Dios que me acercó desde muy temprano al lenguaje de la pintura.</p><p>Hoy tengo 26 años y muchas de las obras que he creado a lo largo de mi vida se han perdido. Las pocas que aún conservo conmigo son parte de esta exposición: fragmentos de distintas etapas, emociones y momentos que lograron permanecer.</p><p>Me atraen especialmente el surrealismo y el arte abstracto. En ellos encuentro libertad para transformar pensamientos, emociones y experiencias en formas, colores y símbolos. Para mí, pintar no es solamente crear una imagen: es sentirla primero. <strong>Pintar con sentimiento es mi pasión.</strong></p></div></section>
+<section id="sobre"><h3>Sobre el artista</h3><div><p>Me considero un pintor de nacimiento. Cuando tenía apenas 6 años, mi padre me ponía a pintar la luna. Con el paso del tiempo he llegado a pensar que quizá aquel gesto de mi infancia fue un pequeño prólogo, un posible designio de Dios que me acercó desde muy temprano al lenguaje de la pintura.</p><p>Hoy tengo 26 años y muchas de las obras que he creado a lo largo de mi vida se han perdido. Las pocas que aún conservo conmigo son parte de esta exposición: fragmentos de distintas etapas, emociones y momentos que lograron permanecer.</p><p>Me atraen especialmente el surrealismo y el arte abstracto. En ellos encuentro libertad para transformar pensamientos, emociones y experiencias en formas, colores y símbolos. Para mí, pintar no es solamente crear una imagen: es sentirla primero. <strong>Pintar con sentimiento es mi pasión.</strong></p></div></section></div>
 </main>
 <footer id="contacto"><div><h2>Contacto</h2><div class="contact"><a href="https://wa.me/50496775363" target="_blank" rel="noopener">WhatsApp · +504 9677-5363</a><a href="mailto:cristhianosorio503@gmail.com">cristhianosorio503@gmail.com</a><a href="https://instagram.com/Cristh_____" target="_blank" rel="noopener">Instagram · @Cristh_____</a></div></div><span class="copy">© 2026 Cristhian Osorio Acosta</span></footer>
 <div class="lightbox" id="lb" role="dialog" aria-modal="true" aria-label="Visor de obra" aria-describedby="lbDesc">
@@ -132,32 +145,32 @@ footer{grid-template-columns:1fr}
 const d=document,body=d.body,$=s=>d.querySelector(s);
 /* Obras: [archivo base, título, técnica, año, descripción, extensión original] */
 const W=[
-['VIGILIA','Vigilia','Acrílico sobre opalina',2026,'Un faro rojo permanece firme frente a una tormenta, proyectando su luz sobre el mar agitado. La obra evoca resistencia, soledad y esperanza en medio de la oscuridad.','.png'],
-['CIELO%20ROJO','Cielo Rojo','Acrílico sobre lienzo',2026,'Un paisaje de intensa expresión cromática, donde un cielo rojo domina una casa solitaria rodeada de naturaleza. El contraste entre la serenidad del campo y la fuerza del color crea una atmósfera de misterio, nostalgia y emoción.','.png'],
-['IGNICION','Ignición','Acrílico sobre lienzo',2026,'Capas de acrílico y pinceladas gestuales. Representa el caos que pueden provocar nuestros pensamientos cuando las ideas y emociones se mezclan.','.png'],
-['SUJECION','Sujeción','Acrílico sobre lienzo',2026,'Habla de la cautividad psicológica y de cómo los pensamientos pueden convertirse en las propias cadenas.','.png'],
-['VISTA','Vista','Acrílico sobre canvas',2026,'Explora la manera en que observamos el mundo y cómo una misma realidad puede cambiar según la mirada.','.png'],
-['EL%20HOGAR','El Hogar','Acrílico sobre canvas',2026,'El hogar como refugio, memoria y lugar de pertenencia; un espacio sencillo cargado de recuerdos.','.png'],
-['AZUL','Azul','Acrílico sobre canvas',2022,'Una exploración del azul como espacio emocional: calma, distancia y profundidad se encuentran en una misma atmósfera.','.png'],
-['ELEFANTE','Elefante','Acrílico sobre cartón',2021,'Una figura poderosa y serena que habla de memoria, fuerza y presencia, llevada a un soporte cotidiano mediante el lenguaje del acrílico.','.png'],
-['LAS%20EMPANADAS%20DE%20MAMA','Las Empanadas de Mamá','Acrílico sobre opalina negra',2021,'Una obra vinculada a la memoria familiar y a esos pequeños momentos cotidianos que, con el tiempo, adquieren un valor afectivo profundo.','.png'],
-['PRIMAVERA','Primavera','Acuarela sobre opalina',2021,'Una interpretación de la renovación y el despertar. La acuarela permite que el color se vuelva ligero, delicado y cambiante.','.png'],
-['SOLITUD','Solitud','Acrílico sobre canvas',2020,'Un espacio para la soledad contemplativa: el silencio, la distancia y la introspección convertidos en una escena de carácter íntimo.','.png'],
-['VERTIGO','Vértigo','Acrílico sobre lienzo',2019,'Una aproximación a la sensación de perder el equilibrio frente a lo desconocido; movimiento, tensión y profundidad construyen una experiencia inquietante.','.png'],
-['NAVEGANTE','Navegante','Acrílico sobre canvas',2018,'Representa el impulso de avanzar aun sin conocer completamente el destino. El viaje aparece como metáfora de búsqueda y descubrimiento personal.','.png'],
-['TIERRA','Tierra','Acrílico sobre opalina',2018,'Una mirada hacia el origen y lo esencial. La tierra aparece como materia, raíz y vínculo con aquello que permanece.','.png'],
-['COMPAN%CC%83IA','Compañía','Acrílico sobre opalina',2017,'Una reflexión sobre la presencia de otros en nuestra vida: aquello que acompaña, sostiene y transforma incluso en los momentos de silencio.','.png'],
-['COSMOS','Cosmos','Acrílico sobre cartón',2017,'Una exploración de lo inmenso y desconocido. El universo se convierte en un símbolo de misterio, imaginación y nuestra pequeña existencia dentro de él.','.png'],
-['ORION','Orión','Acrílico sobre lienzo',2017,'Inspirada en la presencia de la constelación de Orión, esta obra lleva la mirada hacia el cielo y hacia la fascinación humana por las estrellas.','.png'],
-['EL%20FLORERO%20DE%20PAME','Florero de Pame','Acrílico',2015,'Una obra temprana construida desde la observación de un objeto cotidiano. El florero se convierte en un ejercicio de color, forma y memoria.','.png']
-].map(([f,t,m,y,x,e])=>({thumb:'thumbs/'+f+'.webp',full:'optimized/'+f+'.webp',orig:f+e,title:t,tech:m,year:y,desc:x}));
+['VIGILIA','Vigilia','Acrílico sobre opalina',2026,'Un faro rojo permanece firme frente a una tormenta, proyectando su luz sobre el mar agitado. La obra evoca resistencia, soledad y esperanza en medio de la oscuridad.','.png',511,800],
+['CIELO%20ROJO','Cielo Rojo','Acrílico sobre lienzo',2026,'Un paisaje de intensa expresión cromática, donde un cielo rojo domina una casa solitaria rodeada de naturaleza. El contraste entre la serenidad del campo y la fuerza del color crea una atmósfera de misterio, nostalgia y emoción.','.png',800,555],
+['IGNICION','Ignición','Acrílico sobre lienzo',2026,'Capas de acrílico y pinceladas gestuales. Representa el caos que pueden provocar nuestros pensamientos cuando las ideas y emociones se mezclan.','.png',540,800],
+['SUJECION','Sujeción','Acrílico sobre lienzo',2026,'Habla de la cautividad psicológica y de cómo los pensamientos pueden convertirse en las propias cadenas.','.png',586,800],
+['VISTA','Vista','Acrílico sobre canvas',2026,'Explora la manera en que observamos el mundo y cómo una misma realidad puede cambiar según la mirada.','.png',600,800],
+['EL%20HOGAR','El Hogar','Acrílico sobre canvas',2026,'El hogar como refugio, memoria y lugar de pertenencia; un espacio sencillo cargado de recuerdos.','.png',600,800],
+['AZUL','Azul','Acrílico sobre canvas',2022,'Una exploración del azul como espacio emocional: calma, distancia y profundidad se encuentran en una misma atmósfera.','.png',669,800],
+['ELEFANTE','Elefante','Acrílico sobre cartón',2021,'Una figura poderosa y serena que habla de memoria, fuerza y presencia, llevada a un soporte cotidiano mediante el lenguaje del acrílico.','.png',800,426],
+['LAS%20EMPANADAS%20DE%20MAMA','Las Empanadas de Mamá','Acrílico sobre opalina negra',2021,'Una obra vinculada a la memoria familiar y a esos pequeños momentos cotidianos que, con el tiempo, adquieren un valor afectivo profundo.','.png',800,800],
+['PRIMAVERA','Primavera','Acuarela sobre opalina',2021,'Una interpretación de la renovación y el despertar. La acuarela permite que el color se vuelva ligero, delicado y cambiante.','.png',800,800],
+['SOLITUD','Solitud','Acrílico sobre canvas',2020,'Un espacio para la soledad contemplativa: el silencio, la distancia y la introspección convertidos en una escena de carácter íntimo.','.png',707,800],
+['VERTIGO','Vértigo','Acrílico sobre lienzo',2019,'Una aproximación a la sensación de perder el equilibrio frente a lo desconocido; movimiento, tensión y profundidad construyen una experiencia inquietante.','.png',581,800],
+['NAVEGANTE','Navegante','Acrílico sobre canvas',2018,'Representa el impulso de avanzar aun sin conocer completamente el destino. El viaje aparece como metáfora de búsqueda y descubrimiento personal.','.png',600,800],
+['TIERRA','Tierra','Acrílico sobre opalina',2018,'Una mirada hacia el origen y lo esencial. La tierra aparece como materia, raíz y vínculo con aquello que permanece.','.png',800,441],
+['COMPAN%CC%83IA','Compañía','Acrílico sobre opalina',2017,'Una reflexión sobre la presencia de otros en nuestra vida: aquello que acompaña, sostiene y transforma incluso en los momentos de silencio.','.png',626,800],
+['COSMOS','Cosmos','Acrílico sobre cartón',2017,'Una exploración de lo inmenso y desconocido. El universo se convierte en un símbolo de misterio, imaginación y nuestra pequeña existencia dentro de él.','.png',800,522],
+['ORION','Orión','Acrílico sobre lienzo',2017,'Inspirada en la presencia de la constelación de Orión, esta obra lleva la mirada hacia el cielo y hacia la fascinación humana por las estrellas.','.png',628,800],
+['EL%20FLORERO%20DE%20PAME','Florero de Pame','Acrílico',2015,'Una obra temprana construida desde la observación de un objeto cotidiano. El florero se convierte en un ejercicio de color, forma y memoria.','.png',533,800]
+].map(([f,t,m,y,x,e,w,h])=>({thumb:'thumbs/'+f+'.webp',full:'optimized/'+f+'.webp',orig:f+e,w:w,h:h,title:t,tech:m,year:y,desc:x}));
 
 const esc=s=>s.replace(/&/g,'&amp;').replace(/"/g,'&quot;');
 function fallback(im,o){im.addEventListener('error',()=>{if(!im.dataset.t){im.dataset.t=1;im.src=o}else im.classList.add('ready')});im.addEventListener('load',()=>im.classList.add('ready'));if(im.complete&&im.naturalWidth)im.classList.add('ready')}
 
 /* Cabecera y progreso */
 const hdr=$('#hdr'),bar=$('#progress');
-function onScroll(){const h=d.documentElement.scrollHeight-innerHeight;bar.style.width=(h>0?scrollY/h*100:0)+'%';hdr.classList.toggle('solid',scrollY>innerHeight*.6)}
+function onScroll(){const h=d.documentElement.scrollHeight-innerHeight;bar.style.transform='scaleX('+(h>0?scrollY/h:0)+')';0}
 addEventListener('scroll',onScroll,{passive:true});onScroll();
 
 /* Portada */
@@ -166,7 +179,7 @@ const hero=[2,1,5,0,10].map(i=>W[i]);let hi=0;
 const hImgs=hero.map((w,i)=>{if(!i)return stage.querySelector('img');const im=new Image();im.src=w.thumb;im.alt=w.title+', '+w.tech.toLowerCase()+', '+w.year;im.decoding='async';stage.append(im);return im});
 function slide(n){hi=n;hImgs.forEach((im,i)=>im.classList.toggle('on',i===n));const w=hero[n];sl.innerHTML='<em>'+w.title+'</em> · '+w.tech+', '+w.year;sc.textContent=(n+1)+' / '+hero.length}
 slide(0);
-if(!matchMedia('(prefers-reduced-motion:reduce)').matches)setInterval(()=>slide((hi+1)%hero.length),5200);
+if(!matchMedia('(prefers-reduced-motion:reduce)').matches)setInterval(()=>{if(!body.classList.contains('open'))slide((hi+1)%hero.length)},5200);
 
 /* Exposición */
 const ranges=[['Todas',0,9999],['2026',2026,2026],['2022',2022,2022],['2021',2021,2021],['2019–2020',2019,2020],['2015–2018',2015,2018]];
@@ -177,12 +190,12 @@ const io='IntersectionObserver' in window?new IntersectionObserver(es=>es.forEac
 function render(){
   list=W.filter(w=>w.year>=range[1]&&w.year<=range[2]);
   box.innerHTML=view==='gallery'
-   ?'<div class="gallery">'+list.map((w,i)=>'<button class="work" type="button" data-i="'+i+'" aria-label="Ver '+esc(w.title)+' en grande"><div class="mat"><img src="'+w.thumb+'" alt="'+esc(w.title)+', '+esc(w.tech.toLowerCase())+'" loading="'+(i<3?'eager':'lazy')+'" decoding="async"></div><div class="label"><strong>'+w.title+'</strong>'+w.tech+', '+w.year+'</div></button>').join('')+'</div>'
+   ?'<div class="gallery">'+list.map((w,i)=>'<button class="work" type="button" data-i="'+i+'" aria-label="Ver '+esc(w.title)+' en grande"><div class="mat"><img src="'+w.thumb+'" width="'+w.w+'" height="'+w.h+'" alt="'+esc(w.title)+', '+esc(w.tech.toLowerCase())+'" loading="'+(i<3?'eager':'lazy')+'" decoding="async"></div><div class="label"><strong>'+w.title+'</strong>'+w.tech+', '+w.year+'</div></button>').join('')+'</div>'
    :'<ol class="catalog">'+list.map((w,i)=>'<li><button class="row" type="button" data-i="'+i+'"><span class="n">'+String(i+1).padStart(2,'0')+'</span><img src="'+w.thumb+'" alt="" loading="lazy"><b>'+w.title+'</b><span class="t">'+w.tech+'</span><span class="y">'+w.year+'</span></button></li>').join('')+'</ol>';
   box.querySelectorAll('img').forEach(im=>fallback(im,list[+im.closest('[data-i]').dataset.i].orig));
   box.querySelectorAll('[data-i]').forEach(el=>{el.onclick=()=>openBox(+el.dataset.i);if(el.classList.contains('work')){io?io.observe(el):el.classList.add('in')}});
 }
-filters.onclick=e=>{const b=e.target.closest('.chip');if(!b)return;range=ranges[+b.dataset.i];filters.querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-pressed',c===b));render()};
+filters.onclick=e=>{const b=e.target.closest('.chip');if(!b)return;range=ranges[+b.dataset.i];filters.querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-pressed',c===b));render();const top=$('.note').offsetTop-130;if(scrollY>top)scrollTo({top,behavior:'instant'})};
 d.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>{view=b.dataset.view;d.querySelectorAll('[data-view]').forEach(x=>x.setAttribute('aria-pressed',x===b));render()});
 render();
 
@@ -200,8 +213,8 @@ function show(i){
   $('#lbCount').textContent=String(cur+1).padStart(2,'0')+' / '+String(list.length).padStart(2,'0');
   if(matchMedia('(min-width:861px)').matches)(new Image).src=list[wrap(cur+1)].full;
 }
-function openBox(i){last=d.activeElement;body.style.overflow='hidden';lb.classList.add('is-open');show(i);bC.focus()}
-function closeBox(){lb.classList.remove('is-open');body.style.overflow='';img.onload=img.onerror=null;img.removeAttribute('src');last&&last.focus({preventScroll:true})}
+function openBox(i){last=d.activeElement;d.documentElement.style.overflow=body.style.overflow='hidden';lb.classList.add('is-open');show(i);bC.focus()}
+function closeBox(){lb.classList.remove('is-open');d.documentElement.style.overflow=body.style.overflow='';img.onload=img.onerror=null;img.removeAttribute('src');last&&last.focus({preventScroll:true})}
 bC.onclick=closeBox;bP.onclick=()=>show(cur-1);bN.onclick=()=>show(cur+1);
 d.addEventListener('keydown',e=>{
   if(!lb.classList.contains('is-open'))return;
@@ -210,6 +223,13 @@ d.addEventListener('keydown',e=>{
 });
 let sx=0;lb.addEventListener('touchstart',e=>sx=e.changedTouches[0].screenX,{passive:true});
 lb.addEventListener('touchend',e=>{const dx=e.changedTouches[0].screenX-sx;if(Math.abs(dx)>45)show(cur+(dx<0?1:-1))},{passive:true});
+
+/* Portada ↔ exposición (el botón Atrás funciona) */
+const inside=['#exposicion','#obra','#sobre','#contacto'];
+function route(){const h=location.hash,on=inside.includes(h);body.classList.toggle('open',on);if(!on||h==='#exposicion')scrollTo({top:0,behavior:'instant'});else{const t=$(h);t&&t.scrollIntoView()}}
+if('scrollRestoration' in history)history.scrollRestoration='manual';
+if(inside.includes(location.hash))history.replaceState(null,'',location.pathname+location.search);
+addEventListener('hashchange',route);route();
 })();
 </script>
 </body>
