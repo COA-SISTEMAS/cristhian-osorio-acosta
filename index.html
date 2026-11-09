@@ -65,6 +65,9 @@ h2{font-family:var(--serif);font-weight:300;font-size:clamp(60px,8vw,128px);line
 /* Vigilia: reducir obra y paspartú juntos, conservando el mismo grosor de borde */
 .work.vigilia .mat{width:40%;margin-inline:auto}
 .work.vigilia .mat img{width:100%}
+/* Cielo Rojo: aumentar 25% el tamaño visual de la obra y su paspartú */
+.work.cielo-rojo .mat{width:125%;max-width:125%}
+.work.cielo-rojo .mat img{width:100%}
 .label{margin-top:22px;max-width:360px;font-size:13px;color:var(--muted);line-height:1.6}
 .label strong{display:block;font-family:var(--serif);font-weight:400;font-style:italic;font-size:27px;line-height:1.15;color:var(--ink)}
 .label span{display:block;margin-top:2px}
@@ -211,7 +214,7 @@ filters.innerHTML=ranges.map((r,i)=>'<button class="chip" type="button" data-i="
 function render(){
   list=W.filter(w=>w.year>=range[1]&&w.year<=range[2]);
   box.innerHTML=view==='gallery'
-   ?'<div class="gallery">'+list.map((w,i)=>'<article class="work'+(w.title==='Vigilia'?' vigilia':'')+'" data-i="'+i+'" tabindex="0" role="button" aria-label="Ver '+esc(w.title)+' en grande"><div class="mat"><img src="'+w.thumb+'" alt="'+esc(w.title)+'" loading="'+(i<2?'eager':'lazy')+'" decoding="async"></div><div class="label"><strong>'+w.title+'</strong><span>'+w.tech+', '+w.year+'</span></div></article>').join('')+'</div>'
+   ?'<div class="gallery">'+list.map((w,i)=>'<article class="work'+(w.title==='Vigilia'?' vigilia':w.title==='Cielo Rojo'?' cielo-rojo':'')+'" data-i="'+i+'" tabindex="0" role="button" aria-label="Ver '+esc(w.title)+' en grande"><div class="mat"><img src="'+w.thumb+'" alt="'+esc(w.title)+'" loading="'+(i<2?'eager':'lazy')+'" decoding="async"></div><div class="label"><strong>'+w.title+'</strong><span>'+w.tech+', '+w.year+'</span></div></article>').join('')+'</div>'
    :'<ol class="catalog">'+list.map((w,i)=>'<li><button class="row" type="button" data-i="'+i+'"><span class="n">'+String(i+1).padStart(2,'0')+'</span><img src="'+w.thumb+'" alt="" loading="lazy"><b>'+w.title+'</b><span class="t">'+w.tech+'</span><span class="y">'+w.year+'</span></button></li>').join('')+'</ol>';
   box.querySelectorAll('img').forEach(im=>fallback(im,list[+im.closest('[data-i]').dataset.i].orig));
   box.querySelectorAll('[data-i]').forEach(el=>{el.onclick=()=>openBox(+el.dataset.i);el.onkeydown=e=>{if(e.target===el&&(e.key==='Enter'||e.key===' ')){e.preventDefault();openBox(+el.dataset.i)}}});
