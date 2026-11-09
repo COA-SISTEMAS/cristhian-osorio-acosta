@@ -27,9 +27,9 @@ section,footer{scroll-margin-top:64px}
 .nav{display:flex;gap:clamp(18px,3vw,38px);font-size:13px;letter-spacing:.06em}.nav a{opacity:.75;transition:opacity .2s}.nav a:hover{opacity:1}
 .progress{position:absolute;left:0;bottom:-1px;height:1px;background:var(--accent);width:100%;transform:scaleX(0);transform-origin:0 0}
 /* Portada */
-#inicio{min-height:100svh;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);align-items:center;gap:5vw;padding:110px var(--px) 70px;background:radial-gradient(120% 90% at 80% 40%,#1d1a17,var(--night));color:var(--cream)}
-h1{font-family:var(--serif);font-weight:300;font-size:clamp(54px,8vw,128px);line-height:.9;letter-spacing:-.03em;margin:22px 0 0}
-h1 em{display:block;color:var(--gold);font-weight:300}
+#inicio{min-height:100svh;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);align-items:center;gap:5vw;padding:56px var(--px) 64px;background:radial-gradient(120% 90% at 80% 40%,#1d1a17,var(--night));color:var(--cream)}
+h1{font-family:var(--serif);font-weight:300;font-size:clamp(50px,6.4vw,104px);line-height:.9;letter-spacing:-.03em;margin:22px 0 0}
+h1 em{display:block;color:var(--gold);font-weight:300;white-space:nowrap}
 .lede{max-width:440px;margin-top:30px;color:#b9b2a5;font-size:16px;line-height:1.85}
 .cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:38px}
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 32px;border:1px solid var(--cream);font-size:13px;letter-spacing:.08em;text-transform:uppercase;transition:background .3s,color .3s}
@@ -82,8 +82,8 @@ footer .copy{grid-column:1/-1;padding-top:28px;border-top:1px solid #2c2a27;font
 .lb-close{top:20px;right:24px;z-index:2}.lb-prev,.lb-next{top:50%;margin-top:-23px}.lb-prev{left:22px}.lb-next{right:382px}
 @media(max-width:860px){
 .nav{gap:18px}.logo{font-size:22px}
-#inicio{grid-template-columns:1fr;gap:56px;align-content:center;min-height:100svh;padding:calc(84px + env(safe-area-inset-top)) 22px 40px}
-.stage{order:-1;height:42svh}.lede{font-size:15px;margin-top:20px}.facts{gap:22px;margin-top:32px}.cta .btn{flex:1}
+#inicio{grid-template-columns:1fr;gap:46px;align-content:center;min-height:100svh;padding:calc(26px + env(safe-area-inset-top)) 22px calc(26px + env(safe-area-inset-bottom))}
+.stage{order:-1;height:31svh;margin-bottom:10px}.lede{font-size:15px;line-height:1.7;margin-top:16px}h1{margin-top:14px}.facts{gap:22px;margin-top:32px}.cta .btn{flex:1}
 .opening{grid-template-columns:1fr;gap:16px;padding:100px 20px 28px}.opening p{justify-self:start;font-size:15px}
 .toolbar{margin:0;padding:0;gap:0}.filters{flex:1;min-width:0;padding:6px 8px 6px 20px}
 .views{flex-direction:column;gap:0;padding:2px 16px 2px 14px;border-left:1px solid var(--line)}.views button{min-height:30px;padding:0}
@@ -125,6 +125,12 @@ button,a{touch-action:manipulation}.filters{overscroll-behavior-x:contain}
 .portrait figcaption span{display:block;margin-top:2px;font:300 13px var(--sans);letter-spacing:.08em;color:var(--muted)}
 @media(min-width:861px){#sobre .who{position:sticky;top:110px;align-self:start}}
 @media(max-width:860px){.artist{margin-top:28px;padding-top:20px;gap:18px}.artist img{width:72px;height:96px}.artist b{font-size:23px}.portrait{max-width:300px;margin-top:22px}}
+
+/* Galería ordenada en columnas continuas (sin huecos) y retrato algo mayor */
+.gallery{display:block;columns:300px;column-gap:44px}
+.work{display:inline-block;width:100%;margin:0 0 56px;break-inside:avoid;-webkit-column-break-inside:avoid;vertical-align:top}
+.artist img{width:108px;height:144px}
+@media(max-width:860px){.gallery{columns:1}.work{margin-bottom:44px}.artist img{width:68px;height:90px}.artist{margin-top:22px;padding-top:18px}.artist b{font-size:22px}}
 </style>
 </head>
 <body>
@@ -132,7 +138,7 @@ button,a{touch-action:manipulation}.filters{overscroll-behavior-x:contain}
 <header class="site-header" id="hdr"><a class="logo" href="#inicio" aria-label="Volver al inicio">COA</a><nav class="nav" aria-label="Principal"><a href="#obra">Obra</a><a href="#sobre">Sobre mí</a><a href="#contacto">Contacto</a></nav><div class="progress" id="progress"></div></header>
 <main>
 <section id="inicio">
-<div><p class="eyebrow">Exposición de pintura</p><h1>Cristhian<em>Osorio Acosta</em></h1><p class="lede">Pintor autodidacta. Una selección de obras nacidas del sentimiento, la imaginación y aquello que no siempre puede decirse con palabras.</p><div class="cta"><a class="btn fill" href="#exposicion">Entrar a la exposición</a></div><a class="artist" href="#sobre"><img src="retratos/cristhian-bn.webp" width="600" height="800" alt="Retrato de Cristhian Osorio Acosta" decoding="async"><span class="who-t"><small>El artista</small><b>Cristhian Osorio Acosta</b><span>Pintor autodidacta · Conócelo →</span></span></a>
+<div><p class="eyebrow">Exposición de pintura</p><h1>Cristhian<em>Osorio Acosta</em></h1><p class="lede">Pintor autodidacta. Una selección de obras nacidas del sentimiento, la imaginación y aquello que no siempre puede decirse con palabras.</p><div class="cta"><a class="btn fill" href="#exposicion">Entrar a la exposición</a></div><a class="artist" href="#sobre"><img src="thumbs/CRISTHIAN.webp" onerror="this.onerror=null;this.src='CRISTHIAN.jpeg'" width="600" height="800" alt="Retrato de Cristhian Osorio Acosta" decoding="async"><span class="who-t"><small>El artista</small><b>Cristhian Osorio Acosta</b><span>Pintor autodidacta · Conócelo →</span></span></a></div>
 <div class="stage" id="stage"><img class="on" src="thumbs/IGNICION.webp" alt="Ignición, acrílico sobre lienzo, 2026" fetchpriority="high" decoding="async"><div class="stage-label"><span id="stageLabel"></span><span id="stageCount"></span></div></div>
 </section>
 <div id="exposicion"><section id="obra">
@@ -142,7 +148,7 @@ button,a{touch-action:manipulation}.filters{overscroll-behavior-x:contain}
 <div id="works"></div>
 </section>
 <section class="statement" aria-label="Declaración del artista"><p>“Pinto aquello que no siempre puede decirse, pero que insiste en ser sentido.”</p></section>
-<section id="sobre"><div class="who"><h3>Sobre el artista</h3><figure class="portrait"><div><img src="retratos/cristhian-color.webp" width="900" height="1200" alt="Cristhian Osorio Acosta, pintor autodidacta" loading="lazy" decoding="async"></div><figcaption>Cristhian Osorio Acosta<span>Pintor autodidacta</span></figcaption></figure></div><div><p>Me considero un pintor de nacimiento. Cuando tenía apenas 6 años, mi padre me ponía a pintar la luna. Con el paso del tiempo he llegado a pensar que quizá aquel gesto de mi infancia fue un pequeño prólogo, un posible designio de Dios que me acercó desde muy temprano al lenguaje de la pintura.</p><p>Hoy tengo 26 años y muchas de las obras que he creado a lo largo de mi vida se han perdido. Las pocas que aún conservo conmigo son parte de esta exposición: fragmentos de distintas etapas, emociones y momentos que lograron permanecer.</p><p>Me atraen especialmente el surrealismo y el arte abstracto. En ellos encuentro libertad para transformar pensamientos, emociones y experiencias en formas, colores y símbolos. Para mí, pintar no es solamente crear una imagen: es sentirla primero. <strong>Pintar con sentimiento es mi pasión.</strong></p></div></section></div>
+<section id="sobre"><div class="who"><h3>Sobre el artista</h3><figure class="portrait"><div><img src="thumbs/CRISTHIAN%20COLOR.webp" onerror="this.onerror=null;this.src='CRISTHIAN%20COLOR.jpeg'" width="600" height="800" alt="Cristhian Osorio Acosta, pintor autodidacta" loading="lazy" decoding="async"></div><figcaption>Cristhian Osorio Acosta<span>Pintor autodidacta</span></figcaption></figure></div><div><p>Me considero un pintor de nacimiento. Cuando tenía apenas 6 años, mi padre me ponía a pintar la luna. Con el paso del tiempo he llegado a pensar que quizá aquel gesto de mi infancia fue un pequeño prólogo, un posible designio de Dios que me acercó desde muy temprano al lenguaje de la pintura.</p><p>Hoy tengo 26 años y muchas de las obras que he creado a lo largo de mi vida se han perdido. Las pocas que aún conservo conmigo son parte de esta exposición: fragmentos de distintas etapas, emociones y momentos que lograron permanecer.</p><p>Me atraen especialmente el surrealismo y el arte abstracto. En ellos encuentro libertad para transformar pensamientos, emociones y experiencias en formas, colores y símbolos. Para mí, pintar no es solamente crear una imagen: es sentirla primero. <strong>Pintar con sentimiento es mi pasión.</strong></p></div></section></div>
 </main>
 <footer id="contacto"><div><h2>Contacto</h2><div class="contact"><a href="https://wa.me/50496775363" target="_blank" rel="noopener">WhatsApp · +504 9677-5363</a><a href="mailto:cristhianosorio503@gmail.com">cristhianosorio503@gmail.com</a><a href="https://instagram.com/Cristh_____" target="_blank" rel="noopener">Instagram · @Cristh_____</a></div></div><span class="copy">© 2026 Cristhian Osorio Acosta</span></footer>
 <div class="lightbox" id="lb" role="dialog" aria-modal="true" aria-label="Visor de obra" aria-describedby="lbDesc">
