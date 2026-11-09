@@ -7,11 +7,14 @@ on:
       - '*.png'
       - '*.jpg'
       - '*.jpeg'
-      - 'index.html'
       - '.github/workflows/optimize-images.yml'
 
 permissions:
   contents: write
+
+concurrency:
+  group: optimizar-imagenes-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   optimize:
@@ -24,9 +27,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: ''
 
       - name: Instalar Sharp
-        run: npm install --no-save sharp@0.33.5
+        run: npm install --no-save --no-package-lock sharp@0.33.5
 
       - name: Generar miniaturas y versiones WebP
         run: |
@@ -35,15 +39,19 @@ jobs:
           const path = require('path');
           const sharp = require('sharp');
 
-          const files = fs.readdirSync('.').filter(file => /\.(png|jpe?g)$/i.test(file));
+          const files = fs.readdirSync('.')
+            .filter(file => /\.(png|jpe?g)$/i.test(file))
+            .sort((a, b) => a.localeCompare(b, 'es'));
+
           fs.mkdirSync('thumbs', { recursive: true });
           fs.mkdirSync('optimized', { recursive: true });
 
           (async () => {
+            let generated = 0;
             for (const file of files) {
               const stat = fs.statSync(file);
               if (stat.size < 100) {
-                console.log(`Omitido por tamaño: ${file}`);
+                console.warn(`Omitido por tamaño insuficiente: ${file} (${stat.size} bytes)`);
                 continue;
               }
 
@@ -52,18 +60,27 @@ jobs:
               const full = path.join('optimized', `${base}.webp`);
 
               await sharp(file)
+                .rotate()
                 .resize({ width: 800, height: 800, fit: 'inside', withoutEnlargement: true })
                 .webp({ quality: 76, effort: 6 })
                 .toFile(thumb);
 
               await sharp(file)
+                .rotate()
                 .resize({ width: 1800, height: 1800, fit: 'inside', withoutEnlargement: true })
                 .webp({ quality: 84, effort: 6 })
                 .toFile(full);
 
+              generated++;
               console.log(`${file} -> ${thumb} + ${full}`);
             }
-          })().catch(error => { console.error(error); process.exit(1); });
+
+            if (!generated) throw new Error('No se generó ninguna imagen.');
+            console.log(`Total de originales optimizados: ${generated}`);
+          })().catch(error => {
+            console.error(error);
+            process.exit(1);
+          });
           NODE
 
       - name: Guardar versiones optimizadas
@@ -71,5 +88,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add thumbs optimized
-          git diff --cached --quiet || git commit -m "Genera miniaturas y WebP optimizados"
+          git diff --cached --quiet || git commit -m "Optimiza imágenes de la exposición"
           git push
