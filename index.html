@@ -152,7 +152,7 @@ footer{grid-template-columns:1fr;padding:56px 22px calc(30px + env(safe-area-ins
 </main>
 <footer id="contacto"><div><h2>Contacto</h2><div class="contact"><a href="https://wa.me/50496775363" target="_blank" rel="noopener">WhatsApp · +504 9677-5363</a><a href="mailto:cristhianosorio503@gmail.com">cristhianosorio503@gmail.com</a><a href="https://instagram.com/Cristh_____" target="_blank" rel="noopener">Instagram · @Cristh_____</a></div></div><span class="copy">© 2026 Cristhian Osorio Acosta</span></footer>
 
-<div class="lightbox" id="lb" role="dialog" aria-modal="true" aria-label="Visor de obra">
+<div class="lightbox" id="lb" role="dialog" aria-modal="true" aria-label="Visor de obra" aria-describedby="lbDesc">
 <button class="lb-btn lb-close" id="lbClose" type="button" aria-label="Cerrar">×</button>
 <button class="lb-btn lb-prev" id="lbPrev" type="button" aria-label="Obra anterior">‹</button>
 <div class="lb-stage"><img id="lbImg" src="" alt=""></div>
@@ -244,14 +244,13 @@ const bar=$('#progress');
 addEventListener('scroll',()=>{const h=d.documentElement.scrollHeight-innerHeight;bar.style.width=(h>0?scrollY/h*100:0)+'%'},{passive:true});
 
 /* Navegación portada ↔ exposición (el botón Atrás funciona) */
-const inside=['#exposicion','#obra','#sobre'];
+const inside=['#exposicion','#obra','#sobre','#contacto'];
 function route(){
-  const h=location.hash;if(h==='#contacto')return;
+  const h=location.hash;
   const on=inside.includes(h);body.classList.toggle('open',on);
   if(!on||h==='#exposicion')scrollTo({top:0,behavior:'instant'});else{const t=$(h);t&&t.scrollIntoView()}
 }
 if('scrollRestoration' in history)history.scrollRestoration='manual';
-if(location.hash&&location.hash!=='#inicio')history.replaceState(null,'',location.pathname+location.search+'#inicio');
 addEventListener('hashchange',route);route();
 })();
 </script>
