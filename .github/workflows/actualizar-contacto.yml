@@ -49,8 +49,8 @@ jobs:
               raise SystemExit("No se encontró el catálogo de obras.")
 
           works = re.findall(r"^\['", catalog.group(1), re.M)
-          if len(works) != 16:
-              raise SystemExit(f"Se esperaban 16 obras y se encontraron {len(works)}.")
+          if len(works) != 17:
+              raise SystemExit(f"Se esperaban 17 obras y se encontraron {len(works)}.")
 
           print(f"Validación correcta: {len(works)} obras y enlaces principales presentes.")
           PY
