@@ -4,10 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
 <title>Cristhian Osorio Acosta — Exposición de pintura</title>
-<meta name="description" content="Exposición de pintura de Cristhian Osorio Acosta: diecisiete  obras en acrílico y acuarela, de 2015 a 2026.">
+<meta name="description" content="Exposición de pintura de Cristhian Osorio Acosta: dieciséis obras en acrílico y acuarela, de 2015 a 2026.">
 <meta name="theme-color" content="#131211">
-<link rel="icon" href="FOTICOM.jfif" type="image/jpeg">
-<meta property="og:type" content="website"><meta property="og:title" content="Cristhian Osorio Acosta — Exposición de pintura"><meta property="og:description" content="Diecisiete obras en acrílico y acuarela, de 2015 a 2026."><meta property="og:locale" content="es_HN">
+<meta property="og:type" content="website"><meta property="og:title" content="Cristhian Osorio Acosta — Exposición de pintura"><meta property="og:description" content="Dieciséis obras en acrílico y acuarela, de 2015 a 2026."><meta property="og:locale" content="es_HN">
 <link rel="preload" as="image" href="thumbs/IGNICION.webp" fetchpriority="high"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -62,12 +61,6 @@ h2{font-family:var(--serif);font-weight:300;font-size:clamp(60px,8vw,128px);line
 .mat{background:#fff;padding:clamp(10px,1.6vw,22px);min-height:140px;box-shadow:0 1px 2px rgba(20,16,12,.08),0 28px 60px rgba(20,16,12,.12);transition:transform .5s cubic-bezier(.2,.7,.2,1),box-shadow .5s}
 .work:hover .mat{transform:translateY(-4px);box-shadow:0 1px 2px rgba(20,16,12,.08),0 40px 80px rgba(20,16,12,.18)}
 .work img{display:block;width:100%;height:auto;opacity:0;transition:opacity .8s}.work img.ready{opacity:1}
-/* Vigilia: reducir obra y paspartú juntos, conservando el mismo grosor de borde */
-.work.vigilia .mat{width:40%;margin-inline:auto}
-.work.vigilia .mat img{width:100%}
-/* Cielo Rojo: aumentar 25% el tamaño visual de la obra y su paspartú */
-.work.cielo-rojo .mat{width:125%;max-width:125%}
-.work.cielo-rojo .mat img{width:100%}
 .label{margin-top:22px;max-width:360px;font-size:13px;color:var(--muted);line-height:1.6}
 .label strong{display:block;font-family:var(--serif);font-weight:400;font-style:italic;font-size:27px;line-height:1.15;color:var(--ink)}
 .label span{display:block;margin-top:2px}
@@ -148,7 +141,7 @@ footer{grid-template-columns:1fr;padding:56px 22px calc(30px + env(safe-area-ins
 
 <div id="exposicion">
 <section id="obra">
-<div class="opening"><h2>Obra</h2><p>Dieciocho pinturas realizadas entre 2015 y 2026, ordenadas de la más reciente a la más antigua. Toca una obra para verla en grande y leer su ficha.</p></div>
+<div class="opening"><h2>Obra</h2><p>Dieciséis pinturas realizadas entre 2015 y 2026, ordenadas de la más reciente a la más antigua. Toca una obra para verla en grande y leer su ficha.</p></div>
 <div class="toolbar"><div class="filters" id="filters" role="group" aria-label="Filtrar por año"></div><div class="views" role="group" aria-label="Vista"><button type="button" data-view="gallery" aria-pressed="true">Galería</button><button type="button" data-view="catalog" aria-pressed="false">Índice</button></div></div>
 <p class="note">Las imágenes pueden tardar un poco en cargar debido a la calidad y resolución de las obras.</p>
 <div id="works"></div>
@@ -159,7 +152,7 @@ footer{grid-template-columns:1fr;padding:56px 22px calc(30px + env(safe-area-ins
 </main>
 <footer id="contacto"><div><h2>Contacto</h2><div class="contact"><a href="https://wa.me/50496775363" target="_blank" rel="noopener">WhatsApp · +504 9677-5363</a><a href="mailto:cristhianosorio503@gmail.com">cristhianosorio503@gmail.com</a><a href="https://instagram.com/Cristh_____" target="_blank" rel="noopener">Instagram · @Cristh_____</a></div></div><span class="copy">© 2026 Cristhian Osorio Acosta</span></footer>
 
-<div class="lightbox" id="lb" role="dialog" aria-modal="true" aria-label="Visor de obra" aria-describedby="lbDesc">
+<div class="lightbox" id="lb" role="dialog" aria-modal="true" aria-label="Visor de obra">
 <button class="lb-btn lb-close" id="lbClose" type="button" aria-label="Cerrar">×</button>
 <button class="lb-btn lb-prev" id="lbPrev" type="button" aria-label="Obra anterior">‹</button>
 <div class="lb-stage"><img id="lbImg" src="" alt=""></div>
@@ -172,8 +165,6 @@ footer{grid-template-columns:1fr;padding:56px 22px calc(30px + env(safe-area-ins
 const d=document,body=d.body,$=s=>d.querySelector(s);
 /* Obras: [archivo base (igual que en el repositorio), título, técnica, año, descripción, extensión original] */
 const W=[
-['VIGILIA','Vigilia','Acrílico sobre opalina',2026,'Un faro rojo permanece firme frente a una tormenta, proyectando su luz sobre el mar agitado. La obra evoca resistencia, soledad y esperanza en medio de la oscuridad.','.png'],
-['CIELO%20ROJO','Cielo Rojo','Acrílico sobre lienzo',2026,'Un paisaje de intensa expresión cromática, donde un cielo rojo domina una casa solitaria rodeada de naturaleza. El contraste entre la serenidad del campo y la fuerza del color crea una atmósfera de misterio, nostalgia y emoción.','.png'],
 ['IGNICION','Ignición','Acrílico sobre lienzo',2026,'Capas de acrílico y pinceladas gestuales. Representa el caos que pueden provocar nuestros pensamientos cuando las ideas y emociones se mezclan.','.png'],
 ['SUJECION','Sujeción','Acrílico sobre lienzo',2026,'Habla de la cautividad psicológica y de cómo los pensamientos pueden convertirse en las propias cadenas.','.png'],
 ['VISTA','Vista','Acrílico sobre canvas',2026,'Explora la manera en que observamos el mundo y cómo una misma realidad puede cambiar según la mirada.','.png'],
@@ -200,7 +191,7 @@ function fallback(im,o){im.addEventListener('error',()=>{if(!im.dataset.t){im.da
 
 /* Portada: obras que se alternan */
 const stage=$('#stage'),sl=$('#stageLabel'),sc=$('#stageCount');
-const hero=[1,15,5,6,10].map(i=>W[i]);let hi=0;
+const hero=[0,14,4,5,9].map(i=>W[i]);let hi=0;
 const hImgs=hero.map((w,i)=>{if(!i)return stage.querySelector('img');const im=new Image();im.src=w.thumb;im.alt=w.title+', '+w.tech.toLowerCase()+', '+w.year;im.decoding='async';if(!i)im.fetchPriority='high';stage.append(im);return im});
 function slide(n){hi=n;hImgs.forEach((im,i)=>im.classList.toggle('on',i===n));const w=hero[n];sl.innerHTML='<em>'+w.title+'</em> · '+w.tech+', '+w.year;sc.textContent=(n+1)+' / '+hero.length}
 slide(0);
@@ -214,7 +205,7 @@ filters.innerHTML=ranges.map((r,i)=>'<button class="chip" type="button" data-i="
 function render(){
   list=W.filter(w=>w.year>=range[1]&&w.year<=range[2]);
   box.innerHTML=view==='gallery'
-   ?'<div class="gallery">'+list.map((w,i)=>'<article class="work'+(w.title==='Vigilia'?' vigilia':w.title==='Cielo Rojo'?' cielo-rojo':'')+'" data-i="'+i+'" tabindex="0" role="button" aria-label="Ver '+esc(w.title)+' en grande"><div class="mat"><img src="'+w.thumb+'" alt="'+esc(w.title)+'" loading="'+(i<2?'eager':'lazy')+'" decoding="async"></div><div class="label"><strong>'+w.title+'</strong><span>'+w.tech+', '+w.year+'</span></div></article>').join('')+'</div>'
+   ?'<div class="gallery">'+list.map((w,i)=>'<article class="work" data-i="'+i+'" tabindex="0" role="button" aria-label="Ver '+esc(w.title)+' en grande"><div class="mat"><img src="'+w.thumb+'" alt="'+esc(w.title)+'" loading="'+(i<2?'eager':'lazy')+'" decoding="async"></div><div class="label"><strong>'+w.title+'</strong><span>'+w.tech+', '+w.year+'</span></div></article>').join('')+'</div>'
    :'<ol class="catalog">'+list.map((w,i)=>'<li><button class="row" type="button" data-i="'+i+'"><span class="n">'+String(i+1).padStart(2,'0')+'</span><img src="'+w.thumb+'" alt="" loading="lazy"><b>'+w.title+'</b><span class="t">'+w.tech+'</span><span class="y">'+w.year+'</span></button></li>').join('')+'</ol>';
   box.querySelectorAll('img').forEach(im=>fallback(im,list[+im.closest('[data-i]').dataset.i].orig));
   box.querySelectorAll('[data-i]').forEach(el=>{el.onclick=()=>openBox(+el.dataset.i);el.onkeydown=e=>{if(e.target===el&&(e.key==='Enter'||e.key===' ')){e.preventDefault();openBox(+el.dataset.i)}}});
@@ -253,15 +244,14 @@ const bar=$('#progress');
 addEventListener('scroll',()=>{const h=d.documentElement.scrollHeight-innerHeight;bar.style.width=(h>0?scrollY/h*100:0)+'%'},{passive:true});
 
 /* Navegación portada ↔ exposición (el botón Atrás funciona) */
-const inside=['#exposicion','#obra','#sobre','#contacto'];
+const inside=['#exposicion','#obra','#sobre'];
 function route(){
-  const h=location.hash;
+  const h=location.hash;if(h==='#contacto')return;
   const on=inside.includes(h);body.classList.toggle('open',on);
   if(!on||h==='#exposicion')scrollTo({top:0,behavior:'instant'});else{const t=$(h);t&&t.scrollIntoView()}
 }
 if('scrollRestoration' in history)history.scrollRestoration='manual';
-/* Al abrir el enlace del sitio, iniciar siempre en la portada aunque llegue con un hash antiguo. */
-if(inside.includes(location.hash))history.replaceState(null,'',location.pathname+location.search);
+if(location.hash&&location.hash!=='#inicio')history.replaceState(null,'',location.pathname+location.search+'#inicio');
 addEventListener('hashchange',route);route();
 })();
 </script>
