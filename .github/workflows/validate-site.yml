@@ -46,8 +46,8 @@ jobs:
           if not catalog:
               raise SystemExit("No se encontró el catálogo.")
           entries = re.findall(r"^\['", catalog.group(1), re.M)
-          if len(entries) != 16:
-              raise SystemExit(f"Catálogo incorrecto: {len(entries)} obras; se esperaban 16.")
+          if len(entries) != 17:
+              raise SystemExit(f"Catálogo incorrecto: {len(entries)} obras; se esperaban 17.")
 
           class Parser(HTMLParser):
               def __init__(self):
@@ -69,7 +69,7 @@ jobs:
           missing_targets = sorted(set(parser.links) - set(parser.ids))
           if missing_targets:
               raise SystemExit("Enlaces internos sin destino: " + ", ".join(missing_targets))
-          print("OK: HTML parseable, 16 obras, IDs únicos y enlaces internos válidos.")
+          print("OK: HTML parseable, 17 obras, IDs únicos y enlaces internos válidos.")
           PY
 
       - name: Comprobar sintaxis JavaScript
